@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 1.5rem;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.headr {
+    background-color: darkslategray;
+    color:white;
+}
+
+.game-area-container {
+    /* min-width: 100%; */
+    width: 100%;
+    /* display: flex;
+    justify-content: center;
+    background-image: "url(/universe.jpg)";
+    background-repeat: "no-repeat";
+    background-color: "black";
+    background-size: "cover"; */
+}
+
+.universe-bg {
+    min-width: 100vw;
+    min-height: 100vh;
+    z-index: 1;
+    position: absolute;
+    transform: rotate(90deg);
+}
+
+.superheroes-img {
+    /* z-index: 99; */
+    /* max-width: 100vw; */
+
+}
