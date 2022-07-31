@@ -12,7 +12,6 @@ export default function GameArea() {
   // };
 
   const testFunc = () => {
-    console.log("HELLO!!!");
     alert("Hello");
   };
 
