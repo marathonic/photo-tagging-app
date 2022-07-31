@@ -7,6 +7,7 @@
 }
 
 body {
+    width: 100%;
     margin: 0;
     padding: 0;
 }
@@ -17,26 +18,5 @@ body {
 }
 
 .game-area-container {
-    /* min-width: 100%; */
     width: 100%;
-    /* display: flex;
-    justify-content: center;
-    background-image: "url(/universe.jpg)";
-    background-repeat: "no-repeat";
-    background-color: "black";
-    background-size: "cover"; */
-}
-
-.universe-bg {
-    min-width: 100vw;
-    min-height: 100vh;
-    z-index: 1;
-    position: absolute;
-    transform: rotate(90deg);
-}
-
-.superheroes-img {
-    /* z-index: 99; */
-    /* max-width: 100vw; */
-
 }
