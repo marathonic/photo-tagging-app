@@ -1,4 +1,4 @@
-export default function GameArea() {
+export default function GameArea({ clickPosition }) {
   //find:
   //  Rogue, Martian Manhunter, Moon Knight, Ramona Flowers
 
@@ -15,11 +15,26 @@ export default function GameArea() {
     alert("Hello");
   };
 
-  const getCoords = (e) => {
+  const getClickCoords = (e) => {
     const xCoord = Math.round(
       (e.nativeEvent.offsetX / e.nativeEvent.target.offsetWidth) * 100
     );
-    console.log("X at: " + xCoord);
+    const yCoord = Math.round(
+      (e.nativeEvent.offsetY / e.nativeEvent.target.offsetHeight) * 100
+    );
+    // console.log("X at: " + xCoord);
+    // console.log("Y at: " + yCoord);
+
+    // Another function, maybe this one's parent:
+
+    // const isMatch = () => {
+    // if X matches (falls in the range of) the location of Rogue's head, the following const is true.
+    const matchesX = xCoord >= 74 && xCoord <= 82;
+    const matchesY = yCoord >= 83 && xCoord <= 91;
+    if (matchesX && matchesY) {
+      console.log("Rogue");
+    }
+    // };
   };
 
   window.onload = function () {
@@ -66,7 +81,7 @@ export default function GameArea() {
         border="0"
         width={"100%"}
         alt=""
-        onClick={getCoords}
+        onClick={clickPosition}
       />
       <map id="super-map-id" name="superheroes-map">
         <area
