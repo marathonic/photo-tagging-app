@@ -6,6 +6,16 @@ export default function Play() {
   const [positionX, setPositionX] = useState(0);
   const [showSelectionModal, setShowSelectionModal] = useState(false);
 
+  const CharacterModal = () => {
+    return (
+      <div className="char-modal">
+        <div className="modal-box">
+          <span>Who is it?:</span>
+        </div>
+      </div>
+    );
+  };
+
   const clickPosition = (e) => {
     const xCoord = Math.round(
       (e.nativeEvent.offsetX / e.nativeEvent.target.offsetWidth) * 100
@@ -14,6 +24,7 @@ export default function Play() {
       (e.nativeEvent.offsetY / e.nativeEvent.target.offsetHeight) * 100
     );
 
+    // we could bundle these into const rogue
     const matchesX = xCoord >= 74 && xCoord <= 82;
     const matchesY = yCoord >= 83 && xCoord <= 91;
     if (matchesX && matchesY) {
@@ -21,6 +32,8 @@ export default function Play() {
     }
 
     setPositionX(xCoord);
+    setShowSelectionModal(!showSelectionModal);
+    // We don't need an event listener bc we're already clicking on the image
   };
 
   return (
@@ -29,7 +42,11 @@ export default function Play() {
       <Header />
       {/* ^We don't need a header here!!! We'll have Navbar. */}
       {/* So do we even  need a separate <GameArea /> ? We could just do all that right here */}
-      <GameArea clickPosition={clickPosition} positionX={positionX} />
+      <GameArea
+        clickPosition={clickPosition}
+        positionX={positionX}
+        showSelectionModal={showSelectionModal}
+      />
     </>
   );
 }

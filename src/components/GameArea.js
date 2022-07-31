@@ -1,4 +1,4 @@
-export default function GameArea({ clickPosition }) {
+export default function GameArea({ clickPosition, showSelectionModal }) {
   //find:
   //  Rogue, Martian Manhunter, Moon Knight, Ramona Flowers
 
@@ -83,17 +83,26 @@ export default function GameArea({ clickPosition }) {
         alt=""
         onClick={clickPosition}
       />
-      <map id="super-map-id" name="superheroes-map">
-        <area
-          shape="circle"
-          coords="640,1790,77" //552, 1058 for Mjolnir, 640, 1790 for Elektra
-          alt="test"
-          href="#"
-          title="title one"
-          style={{ cursor: "pointer", border: "red" }}
-          onClick={testFunc}
-        ></area>
-      </map>
+      {/* the modal is showing up at the bottom taking up all the width, hmmmm */}
+      {showSelectionModal && (
+        <div className="modal">
+          <div className="modal">
+            <span>Who is it?:</span>
+          </div>
+        </div>
+      )}
+      {/* We're not using the map anymore */}
+      {/* <map id="super-map-id" name="superheroes-map"> */}
+      {/* <area */}
+      {/* shape="circle" */}
+      {/* coords="640,1790,77" //552, 1058 for Mjolnir, 640, 1790 for Elektra */}
+      {/* alt="test" */}
+      {/* href="#" */}
+      {/* title="title one" */}
+      {/* style={{ cursor: "pointer", border: "red" }} */}
+      {/* onClick={testFunc} */}
+      {/* ></area> */}
+      {/* </map> */}
     </div>
   );
 }
