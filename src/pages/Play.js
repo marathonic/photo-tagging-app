@@ -34,7 +34,15 @@ export default function Play({
     var rect = e.target.getBoundingClientRect(); // get some poition, scale,... properties of the item
     let mousePos = { x: 0, y: 0 };
     mousePos.x = e.clientX - rect.left; // get the mouse position relative to the element
-    mousePos.y = e.clientY - rect.top;
+    mousePos.y = e.clientY - e.target.scrollTop; //
+    // // testing solutions to fix scroll:
+    // mousePos.x = e.clientX + e.target.scrollLeft - rect.left; // <-- trying out. Need to fix scroll.
+    // mousePos.y = e.clientY + e.target.scrollTop - rect.top; // <-- trying out. Need to fix scroll.
+    // // testing more solutions to fix scroll:
+    // mousePos.x =
+    //   (e.nativeEvent.offsetX / e.nativeEvent.target.offsetWidth) * 100;
+    // mousePos.y =
+    //   (e.nativeEvent.offsetY / e.nativeEvent.target.offsetHeight) * 100;
     setClientClickPosition({ x: mousePos.x, y: mousePos.y });
   };
 
