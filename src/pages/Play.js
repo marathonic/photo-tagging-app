@@ -2,12 +2,12 @@ import Header from "../components/Header";
 import GameArea from "../components/GameArea";
 import { useState } from "react";
 
-export default function Play({ openModal }) {
-  const [lastClickPosition, setLastClickPosition] = useState({
-    x: 0,
-    y: 0,
-  });
-
+export default function Play({
+  openModal,
+  setLastClickPosition,
+  lastClickPosition,
+  setClientClickPosition,
+}) {
   const clickPosition = (e) => {
     const xCoord = Math.round(
       (e.nativeEvent.offsetX / e.nativeEvent.target.offsetWidth) * 100
@@ -29,6 +29,13 @@ export default function Play({ openModal }) {
     });
     openModal();
     // We don't need an event listener bc we're already clicking on the image
+
+    // new code:
+    var rect = e.target.getBoundingClientRect(); // get some poition, scale,... properties of the item
+    let mousePos = { x: 0, y: 0 };
+    mousePos.x = e.clientX - rect.left; // get the mouse position relative to the element
+    mousePos.y = e.clientY - rect.top;
+    setClientClickPosition({ x: mousePos.x, y: mousePos.y });
   };
 
   return (

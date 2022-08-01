@@ -41,6 +41,8 @@ export default function GameArea({
     // };
   };
 
+  // Attempting to position modal at mouse click position:
+
   // window.onload = function () {
   //   var ImageMap = function (map, img) {
   //       var n,

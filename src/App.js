@@ -6,8 +6,16 @@ import { Modal } from "./components/Modal";
 
 function App() {
   const [showModal, setShowModal] = useState(false);
+  const [lastClickPosition, setLastClickPosition] = useState({
+    x: 0,
+    y: 0,
+  });
+  const [clientClickPosition, setClientClickPosition] = useState({
+    x: 0,
+    y: 0,
+  });
 
-  const openModal = () => {
+  const openModal = (lastPosition) => {
     setShowModal(true);
   };
 
@@ -15,8 +23,19 @@ function App() {
     <div className="app-container">
       {/* We actually need a routed nav, not just a header! */}
       {/* <BrowserRouter> ...  */}
-      {showModal ? <Modal setShowModal={setShowModal} /> : null}
-      <Play openModal={openModal} />
+      {showModal ? (
+        <Modal
+          setShowModal={setShowModal}
+          lastClickPosition={lastClickPosition}
+          clientClickPosition={clientClickPosition}
+        />
+      ) : null}
+      <Play
+        openModal={openModal}
+        setLastClickPosition={setLastClickPosition}
+        lastClickPosition={lastClickPosition}
+        setClientClickPosition={setClientClickPosition}
+      />
       {/* Close <BrowserRouter />... */}
     </div>
   );

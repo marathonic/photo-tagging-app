@@ -54,6 +54,13 @@ body {
     position: relative;
     animation: animate 0.3s;
   }
+
+  .modal-container .modal {
+    position: absolute;
+    left: 0;
+    
+  }
+  
   .modal button {
     position: absolute;
     top: 7px;
