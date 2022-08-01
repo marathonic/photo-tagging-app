@@ -44,8 +44,8 @@ body {
   }
   .modal-container .modal {
     z-index: 1;
-    width: 350px;
-    height: 220px;
+    width: 42%;
+    height: 20%;
     background: white;
     display: flex;
     align-items: center;
@@ -53,6 +53,10 @@ body {
     border-radius: 5px;
     /* position: relative; */
     animation: animate 0.3s;
+
+    
+    /* my styling */
+    flex-wrap: wrap;
   }
 
   .modal-container .modal {

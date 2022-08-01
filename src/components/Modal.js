@@ -9,8 +9,14 @@ export const Modal = ({ setShowModal, clientClickPosition }) => {
     }
   };
 
+  const screenWidth = window.innerWidth;
+  const isOverflowingScreen = screenWidth * 0.6 < clientClickPosition.x;
+  const avoidOverflow = clientClickPosition.x * 0.5;
+
   const modalLocation = {
-    left: clientClickPosition.x + "px",
+    left: isOverflowingScreen
+      ? avoidOverflow + "px"
+      : clientClickPosition.x + "px",
     top: clientClickPosition.y + "px",
   };
 
@@ -19,7 +25,7 @@ export const Modal = ({ setShowModal, clientClickPosition }) => {
   return ReactDOM.createPortal(
     <div className="modal-container" ref={useModalRef} onClick={closeModal}>
       <div className="modal" style={modalLocation}>
-        <h2>This is a modal</h2>
+        <span>Who's that?</span>
         <button onClick={() => setShowModal(false)}>X</button>
       </div>
     </div>,
