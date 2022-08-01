@@ -15,8 +15,8 @@ function App() {
     <div className="app-container">
       {/* We actually need a routed nav, not just a header! */}
       {/* <BrowserRouter> ...  */}
-      <Play openModal={openModal} />
       {showModal ? <Modal setShowModal={setShowModal} /> : null}
+      <Play openModal={openModal} />
       {/* Close <BrowserRouter />... */}
     </div>
   );
