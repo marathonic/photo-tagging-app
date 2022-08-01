@@ -1,8 +1,10 @@
 import GameArea from "./components/GameArea";
 import Header from "./components/Header";
 import Play from "./pages/Play";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal } from "./components/Modal";
+import db from "./firebase";
+import { onSnapshot, collection } from "firebase/firestore";
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -18,6 +20,12 @@ function App() {
   const openModal = (lastPosition) => {
     setShowModal(true);
   };
+
+  useEffect(() => {
+    onSnapshot(collection(db, "positions"), (snapshot) => {
+      console.log(snapshot);
+    });
+  });
 
   return (
     <div className="app-container">
