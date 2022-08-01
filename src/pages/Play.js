@@ -2,19 +2,11 @@ import Header from "../components/Header";
 import GameArea from "../components/GameArea";
 import { useState } from "react";
 
-export default function Play() {
-  const [positionX, setPositionX] = useState(0);
-  const [showSelectionModal, setShowSelectionModal] = useState(false);
-
-  const CharacterModal = () => {
-    return (
-      <div className="char-modal">
-        <div className="modal-box">
-          <span>Who is it?:</span>
-        </div>
-      </div>
-    );
-  };
+export default function Play({ openModal }) {
+  const [lastClickPosition, setLastClickPosition] = useState({
+    x: 0,
+    y: 0,
+  });
 
   const clickPosition = (e) => {
     const xCoord = Math.round(
@@ -31,8 +23,11 @@ export default function Play() {
       console.log("You found Rogue!");
     }
 
-    setPositionX(xCoord);
-    setShowSelectionModal(!showSelectionModal);
+    setLastClickPosition({
+      x: xCoord,
+      y: yCoord,
+    });
+    openModal();
     // We don't need an event listener bc we're already clicking on the image
   };
 
@@ -42,11 +37,7 @@ export default function Play() {
       <Header />
       {/* ^We don't need a header here!!! We'll have Navbar. */}
       {/* So do we even  need a separate <GameArea /> ? We could just do all that right here */}
-      <GameArea
-        clickPosition={clickPosition}
-        positionX={positionX}
-        showSelectionModal={showSelectionModal}
-      />
+      <GameArea clickPosition={clickPosition} openModal={openModal} />
     </>
   );
 }
