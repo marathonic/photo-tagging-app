@@ -7,6 +7,8 @@ export default function Play({
   setLastClickPosition,
   lastClickPosition,
   setClientClickPosition,
+  lastFound,
+  setLastFound,
 }) {
   const clickPosition = (e) => {
     const xCoord = Math.round(
@@ -17,10 +19,21 @@ export default function Play({
     );
 
     // we could bundle these into const rogue
+    // We want to rework this logic to work alongside our Firebase integration
+    // Loop over each object in our database, and
+    // if the click coordinates here match those values,
+    // get the [name] value, which will be 'rogue' in this case.
+    // reworked: const matchesX = xCoord >= myObj.xMin && myObj.xCoord <= xMax;
+    // reworked: const matchesY = yCoord >= myObj.yMin && yCoord <= myObj.yMax;
+    // reworked: if (matchesX && matchesY) {
+    // reworked: console.log(`You found ${myObj.name}!`); // <--- "You found rogue!"
+    // reworked: setLastFound(myObj.name); // <--- lastFound === 'rogue'
+    // reworked: }
     const matchesX = xCoord >= 74 && xCoord <= 82;
     const matchesY = yCoord >= 83 && xCoord <= 91;
     if (matchesX && matchesY) {
       console.log("You found Rogue!");
+      setLastFound("rogue");
     }
 
     setLastClickPosition({

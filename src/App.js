@@ -16,6 +16,7 @@ function App() {
     x: 0,
     y: 0,
   });
+  const [lastFound, setLastFound] = useState("");
 
   const openModal = (lastPosition) => {
     setShowModal(true);
@@ -43,6 +44,8 @@ function App() {
         setLastClickPosition={setLastClickPosition}
         lastClickPosition={lastClickPosition}
         setClientClickPosition={setClientClickPosition}
+        lastFound={lastFound}
+        setLastFound={setLastFound}
       />
       {/* Close <BrowserRouter />... */}
     </div>
