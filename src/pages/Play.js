@@ -9,7 +9,12 @@ export default function Play({
   setClientClickPosition,
   lastFound,
   setLastFound,
+  allPositions,
+  previouslyFound,
+  setPreviouslyFound,
 }) {
+  console.log(allPositions);
+
   const clickPosition = (e) => {
     const xCoord = Math.round(
       (e.nativeEvent.offsetX / e.nativeEvent.target.offsetWidth) * 100
@@ -32,10 +37,38 @@ export default function Play({
     const matchesX = xCoord >= 74 && xCoord <= 82;
     const matchesY = yCoord >= 83 && xCoord <= 91;
     if (matchesX && matchesY) {
-      console.log("You found Rogue!");
+      // console.log("You found Rogue!");
       setLastFound("rogue");
+      // IMPORTANT:
+      // Change lastFound below to be myObj.name;
+      setPreviouslyFound(...previouslyFound, lastFound);
+    }
+    //what we're trying to figure out:
+    // Take the click coordinates and check if it falls between the ranges
+    // of any 1 object inside of our database(allPositions).
+    // If so, console log the object's --name-- property.
+    for (let i = 0; i < allPositions.length; i++) {
+      const curr = allPositions[i];
+      // same as saying: if (xCoord => curr.xMin && xCoord <= curr.xMax) {
+      if (curr.xMin <= xCoord && xCoord <= curr.xMax) {
+        if (curr.yMin <= yCoord && yCoord <= curr.yMax) {
+          // These two are the same. Obviously we want to get the values from firestore and not hard code them here.
+          // However, this does mean that we can just use the code above:
+          //  setLastFound(curr.name), followed by setPreviouslyFound(...previouslyFound, lastFound)
+          // maybe filter it like setPreviouslyFound({const filtered = previouslyFound.filter((el) => el !== lastFound); return filtered.concat(lastFound)})
+          //  and that should update our previouslyFound.
+          console.log(curr.name);
+          console.log(lastFound);
+          // WTF Is going on with this, it's giving us ['r', 'rogue'] when we click rogue twice.
+          // if (!previouslyFound.includes(curr.name)) {
+          // }
+        }
+      }
+
+      // setPreviouslyFound();
     }
 
+    // lastClickPosition is used to place the modal
     setLastClickPosition({
       x: xCoord,
       y: yCoord,
