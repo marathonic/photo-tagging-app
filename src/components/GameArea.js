@@ -35,9 +35,9 @@ export default function GameArea({
     // if X matches (falls in the range of) the location of Rogue's head, the following const is true.
     const matchesX = xCoord >= 74 && xCoord <= 82;
     const matchesY = yCoord >= 83 && xCoord <= 91;
-    if (matchesX && matchesY) {
-      console.log("Rogue");
-    }
+    // if (matchesX && matchesY) {
+    //   console.log("Rogue");
+    // }
     // };
   };
 

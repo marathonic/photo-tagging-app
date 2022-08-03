@@ -25,7 +25,6 @@ export default function App() {
     setShowModal(true);
   };
 
-  console.log(allPositions);
   useEffect(
     () =>
       onSnapshot(collection(db, "positions"), (snapshot) =>
@@ -33,6 +32,8 @@ export default function App() {
       ),
     []
   );
+
+  console.log(previouslyFound);
 
   return (
     <div className="app-container">
