@@ -23,8 +23,14 @@ export const Modal = ({ setShowModal, clientClickPosition, allPositions }) => {
   //   Renders modal to the portal in index.html
 
   // map
+  // we could store the data locally
   const thumbnails = allPositions.map((person) => {
-    return <li>{person.thumbnail}</li>;
+    return (
+      <div className="person-preview">
+        <img src={person.thumbnail} alt={person.name} className="thumbnail" />
+        <span>{person.name}</span>
+      </div>
+    );
   });
 
   return ReactDOM.createPortal(
@@ -34,8 +40,8 @@ export const Modal = ({ setShowModal, clientClickPosition, allPositions }) => {
             map over each individual in allPositions and display their image, like:
             <img src={person.thumbnail} alt={person.name}/>  
         */}
-        <ul className="thumbnails-ul">{thumbnails}</ul>
-        <span>Who's that?</span>
+        <h4>Who's that?</h4>
+        <div className="thumbnails-div">{thumbnails}</div>
         <button onClick={() => setShowModal(false)}>X</button>
       </div>
     </div>,
