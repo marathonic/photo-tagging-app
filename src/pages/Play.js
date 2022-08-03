@@ -53,6 +53,16 @@ export default function Play({
       // same as saying: if (xCoord => curr.xMin && xCoord <= curr.xMax) {
       if (curr.xMin <= xCoord && xCoord <= curr.xMax) {
         if (curr.yMin <= yCoord && yCoord <= curr.yMax) {
+          // WHY WE NEED LASTFOUND:
+          // We want lastFound because we need to ask the player:
+          // Who is that? / Who did you find?
+          // Then they'll pick one of the options, and that's where lastFound comes in,
+          // because we will check that the name of that clicked character is === lastFound
+          // all previously found characters will have their images greyed out
+          // if the clicked character is not yet part of previouslyFound, add it to previouslyFound.
+          // Alternatively, we could also display info about the character when the click coordinates match those of someone in previouslyFound.
+          // For example, if we find Rogue, and then we click on her again, we could get a modal that says:
+          // <img src= curr.headshot />, <h4>{curr.name}</h4> (same as: Rogue). <span>{curr.affiliation}</span>(same as: Affiliation: X-Men), description, etc.
           setLastFound(curr.name);
           found = curr.name;
           setPreviouslyFound((prevState) => {

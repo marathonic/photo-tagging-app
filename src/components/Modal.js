@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import ReactDOM from "react-dom";
 
-export const Modal = ({ setShowModal, clientClickPosition }) => {
+export const Modal = ({ setShowModal, clientClickPosition, allPositions }) => {
   const useModalRef = useRef();
   const closeModal = (e) => {
     if (e.target === useModalRef.current) {
@@ -22,9 +22,19 @@ export const Modal = ({ setShowModal, clientClickPosition }) => {
 
   //   Renders modal to the portal in index.html
 
+  // map
+  const thumbnails = allPositions.map((person) => {
+    return <li>{person.thumbnail}</li>;
+  });
+
   return ReactDOM.createPortal(
     <div className="modal-container" ref={useModalRef} onClick={closeModal}>
       <div className="modal" style={modalLocation}>
+        {/* Who's that?
+            map over each individual in allPositions and display their image, like:
+            <img src={person.thumbnail} alt={person.name}/>  
+        */}
+        <ul className="thumbnails-ul">{thumbnails}</ul>
         <span>Who's that?</span>
         <button onClick={() => setShowModal(false)}>X</button>
       </div>

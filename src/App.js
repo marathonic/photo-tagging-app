@@ -44,6 +44,7 @@ export default function App() {
           setShowModal={setShowModal}
           lastClickPosition={lastClickPosition}
           clientClickPosition={clientClickPosition}
+          allPositions={allPositions}
         />
       ) : null}
       <Play
