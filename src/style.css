@@ -105,14 +105,19 @@ body {
   }
   
   @media only screen and (max-width: 480px) {
+
+    .headr {
+      padding-bottom: 7%;
+    }
+
     .modal-container .modal {
       z-index: 1;
-      width: 42%;
+      width: 52%;
       height: 20%;
       background: white;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       border-radius: 5px;
       /* position: relative; */
       animation: animate 0.3s;
@@ -122,6 +127,11 @@ body {
       overflow: scroll;
     }
 
+    .modal > h4 {
+      margin-left: 5%;
+      margin-top: 7%;
+    }
+
 
   .thumbnails-div {
     width: 100%;
@@ -129,11 +139,15 @@ body {
   
   .person-preview {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center; 
   }
 
+  .person-preview > span {
+    width: 100%;
+  }
+
   .thumbnail {
-    max-width: 40%;
+    max-width: 36%;
   }
   }

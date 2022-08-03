@@ -28,7 +28,9 @@ export default function App() {
   useEffect(
     () =>
       onSnapshot(collection(db, "positions"), (snapshot) =>
-        setAllPositions(snapshot.docs.map((doc) => doc.data()))
+        setAllPositions(
+          snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+        )
       ),
     []
   );

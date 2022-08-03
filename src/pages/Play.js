@@ -23,6 +23,9 @@ export default function Play({
       (e.nativeEvent.offsetY / e.nativeEvent.target.offsetHeight) * 100
     );
 
+    console.log("Coordinates clicked: ");
+    console.log(xCoord, yCoord);
+
     // we could bundle these into const rogue
     // We want to rework this logic to work alongside our Firebase integration
     // Loop over each object in our database, and
