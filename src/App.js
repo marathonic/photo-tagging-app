@@ -47,6 +47,9 @@ export default function App() {
           lastClickPosition={lastClickPosition}
           clientClickPosition={clientClickPosition}
           allPositions={allPositions}
+          lastFound={lastFound}
+          previouslyFound={previouslyFound}
+          setPreviouslyFound={setPreviouslyFound}
         />
       ) : null}
       <Play

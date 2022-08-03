@@ -52,7 +52,7 @@ export default function Play({
     // If so, console log the object's --name-- property.
     for (let i = 0; i < allPositions.length; i++) {
       const curr = allPositions[i];
-      let found = "found";
+      // let found = "found";
       // same as saying: if (xCoord => curr.xMin && xCoord <= curr.xMax) {
       if (curr.xMin <= xCoord && xCoord <= curr.xMax) {
         if (curr.yMin <= yCoord && yCoord <= curr.yMax) {
@@ -67,11 +67,11 @@ export default function Play({
           // For example, if we find Rogue, and then we click on her again, we could get a modal that says:
           // <img src= curr.headshot />, <h4>{curr.name}</h4> (same as: Rogue). <span>{curr.affiliation}</span>(same as: Affiliation: X-Men), description, etc.
           setLastFound(curr.name);
-          found = curr.name;
-          setPreviouslyFound((prevState) => {
-            const prev = prevState.filter((person) => person !== found);
-            return [...prev, found];
-          });
+          // found = curr.name;
+          // setPreviouslyFound((prevState) => {
+          //   const prev = prevState.filter((person) => person !== found);
+          //   return [...prev, found];
+          // });
         }
       }
 

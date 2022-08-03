@@ -95,6 +95,10 @@ body {
     max-width: 10%;
   }
 
+  .grayed {
+    filter: brightness(2.25) grayscale(1);
+  }
+
   @keyframes animate {
     from {
       transform: scale(0.5);

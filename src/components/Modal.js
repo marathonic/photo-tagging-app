@@ -1,7 +1,14 @@
 import React, { useRef } from "react";
 import ReactDOM from "react-dom";
 
-export const Modal = ({ setShowModal, clientClickPosition, allPositions }) => {
+export const Modal = ({
+  setShowModal,
+  clientClickPosition,
+  allPositions,
+  lastFound,
+  previouslyFound,
+  setPreviouslyFound,
+}) => {
   const useModalRef = useRef();
   const closeModal = (e) => {
     if (e.target === useModalRef.current) {
@@ -25,9 +32,25 @@ export const Modal = ({ setShowModal, clientClickPosition, allPositions }) => {
 
   const validateFind = (e) => {
     // Yes! We're getting the name of the person from the "alt" attr
-    console.log(e.target.alt);
+    const personFound = e.target.alt;
+    if (lastFound !== personFound) {
+      return;
+    } else if (previouslyFound.includes(personFound)) {
+      return;
+    }
+    setPreviouslyFound((prevFound) => [...prevFound, personFound]);
+    const toStyle = document.querySelector(`[data-person-name=${personFound}]`);
+    toStyle.classList.add("grayed");
+    // Here, we could fire up a new modal:
+    // You found {personFound}!
+    // <a cool image of the person>
+    // if it's Ramona: 'What took you so long?', if it's Rogue: 'Nice goin', Sugah!', if it's Deadpool: 'Yeah yeah thanks I guess'
+    // console.log(personFound);
+    // console.log(previouslyFound);
   };
 
+  console.log("previouslyFound: ");
+  console.log(previouslyFound);
   //   Renders modal to the portal in index.html
 
   // map
@@ -39,6 +62,7 @@ export const Modal = ({ setShowModal, clientClickPosition, allPositions }) => {
         <img
           src={person.thumbnail}
           alt={person.name}
+          data-person-name={person.name}
           className="thumbnail"
           onClick={validateFind}
         />
