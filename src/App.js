@@ -2,9 +2,11 @@ import GameArea from "./components/GameArea";
 import Header from "./components/Header";
 import Play from "./pages/Play";
 import React, { useState, useEffect } from "react";
+import { Route, Routes, Link } from "react-router-dom";
 import { Modal } from "./components/Modal";
 import db from "./firebase";
 import { onSnapshot, collection } from "firebase/firestore";
+import Home from "./pages/Home";
 
 export default function App() {
   const [showModal, setShowModal] = useState(false);
@@ -38,32 +40,40 @@ export default function App() {
   console.log(previouslyFound);
 
   return (
-    <div className="app-container">
-      {/* We actually need a routed nav, not just a header! */}
-      {/* <BrowserRouter> ...  */}
-      {showModal ? (
-        <Modal
-          setShowModal={setShowModal}
-          lastClickPosition={lastClickPosition}
-          clientClickPosition={clientClickPosition}
-          allPositions={allPositions}
-          lastFound={lastFound}
-          previouslyFound={previouslyFound}
-          setPreviouslyFound={setPreviouslyFound}
+    <>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/play">Play</Link>
+          </li>
+        </ul>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route
+          path="/play"
+          element={
+            <Play
+              openModal={openModal}
+              setLastClickPosition={setLastClickPosition}
+              lastClickPosition={lastClickPosition}
+              setClientClickPosition={setClientClickPosition}
+              lastFound={lastFound}
+              setLastFound={setLastFound}
+              allPositions={allPositions}
+              previouslyFound={previouslyFound}
+              setPreviouslyFound={setPreviouslyFound}
+              showModal={showModal}
+              clientClickPosition={clientClickPosition}
+              setShowModal={setShowModal}
+            />
+          }
         />
-      ) : null}
-      <Play
-        openModal={openModal}
-        setLastClickPosition={setLastClickPosition}
-        lastClickPosition={lastClickPosition}
-        setClientClickPosition={setClientClickPosition}
-        lastFound={lastFound}
-        setLastFound={setLastFound}
-        allPositions={allPositions}
-        previouslyFound={previouslyFound}
-        setPreviouslyFound={setPreviouslyFound}
-      />
-      {/* Close <BrowserRouter />... */}
-    </div>
+        {/* Close <BrowserRouter />... */}
+      </Routes>
+    </>
   );
 }

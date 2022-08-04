@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 import GameArea from "../components/GameArea";
 import { useState } from "react";
+import { Modal } from "../components/Modal";
 
 export default function Play({
   openModal,
@@ -9,6 +10,12 @@ export default function Play({
   setLastFound,
   allPositions,
   previouslyFound,
+  showModal,
+  setShowModal,
+  lastClickPosition,
+  clientClickPosition,
+  lastFound,
+  setPreviouslyFound,
 }) {
   console.log(allPositions);
 
@@ -53,6 +60,17 @@ export default function Play({
       <Header />
       {/* ^We don't need a header here!!! We'll have Navbar. */}
       {/* So do we even  need a separate <GameArea /> ? We could just do all that right here */}
+      {showModal ? (
+        <Modal
+          setShowModal={setShowModal}
+          lastClickPosition={lastClickPosition}
+          clientClickPosition={clientClickPosition}
+          allPositions={allPositions}
+          lastFound={lastFound}
+          previouslyFound={previouslyFound}
+          setPreviouslyFound={setPreviouslyFound}
+        />
+      ) : null}
       <GameArea clickPosition={clickPosition} openModal={openModal} />
     </>
   );
