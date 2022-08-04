@@ -40,6 +40,10 @@ export default function App() {
   console.log(previouslyFound);
 
   return (
+    // Pages (from left to right on navbar):
+    // i Information
+    // Play (level select), game controller icon
+    // Leaderboards
     <>
       <nav>
         <ul>
@@ -52,7 +56,7 @@ export default function App() {
         </ul>
       </nav>
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/" element={<Home allPositions={allPositions} />}></Route>
         <Route
           path="/play"
           element={
