@@ -45,13 +45,14 @@ export default function App() {
     // Play (level select), game controller icon
     // Leaderboards
     <>
-      <nav>
-        <ul>
+      <nav className="nav-bar">
+        <ul className="nav-ul">
           <li>
             <Link to="/">Home</Link>
           </li>
+
           <li>
-            <Link to="/play">Play</Link>
+            <Link to="/scoreboard">Scores</Link>
           </li>
         </ul>
       </nav>
