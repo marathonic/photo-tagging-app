@@ -2,7 +2,7 @@ const BountyBar = ({ allPositions, previouslyFound }) => {
   const persons = allPositions.map((person) => {
     const conditionalGray = {
       filter: previouslyFound.includes(person.name)
-        ? "brightness(70%) contrast(70%)"
+        ? "brightness(120%) opacity(50%)"
         : "brightness(120%)",
     };
 
