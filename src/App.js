@@ -1,5 +1,5 @@
 import GameArea from "./components/GameArea";
-import Header from "./components/Header";
+import BountyBar from "./components/Header";
 import Play from "./pages/Play";
 import React, { useState, useEffect } from "react";
 import { Route, Routes, Link, useLocation } from "react-router-dom";
@@ -61,6 +61,12 @@ export default function App() {
           </li>
         </ul>
       </nav>
+      {location.pathname === "/play" && (
+        <BountyBar
+          allPositions={allPositions}
+          previouslyFound={previouslyFound}
+        />
+      )}
       <Routes>
         <Route path="/" element={<Home allPositions={allPositions} />}></Route>
         <Route

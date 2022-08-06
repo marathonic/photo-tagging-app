@@ -1,4 +1,4 @@
-import Header from "../components/Header";
+import BountyBar from "../components/Header";
 import GameArea from "../components/GameArea";
 import { useState } from "react";
 import { Modal } from "../components/Modal";
@@ -56,6 +56,9 @@ export default function Play({
 
   return (
     <>
+      {/* We don't need a BountyBar here!!! We'll have Navbar. */}
+      {/* ^We don't need a BountyBar here!!! We'll have Navbar. */}
+      {/* So do we even  need a separate <GameArea /> ? We could just do all that right here */}
       {showModal ? (
         <Modal
           setShowModal={setShowModal}
