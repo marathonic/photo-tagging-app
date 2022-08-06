@@ -91,6 +91,8 @@ export default function App() {
               showModal={showModal}
               clientClickPosition={clientClickPosition}
               setShowModal={setShowModal}
+              setIsGameOver={setIsGameOver}
+              isGameOver={isGameOver}
             />
           }
         />

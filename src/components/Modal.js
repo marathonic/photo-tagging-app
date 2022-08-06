@@ -9,6 +9,7 @@ export const Modal = ({
   lastFound,
   previouslyFound,
   setPreviouslyFound,
+  setIsGameOver,
 }) => {
   const useModalRef = useRef();
   const closeModal = (e) => {
@@ -50,6 +51,9 @@ export const Modal = ({
       return;
     }
     setPreviouslyFound((prevFound) => [...prevFound, selectedPerson]);
+    if (previouslyFound.length === allPositions.length) {
+      setIsGameOver(true);
+    }
   };
 
   console.log("previouslyFound: ");

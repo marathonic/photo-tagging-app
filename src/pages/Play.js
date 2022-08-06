@@ -16,6 +16,7 @@ export default function Play({
   clientClickPosition,
   lastFound,
   setPreviouslyFound,
+  isGameOver,
 }) {
   console.log(allPositions);
 
@@ -68,6 +69,7 @@ export default function Play({
           lastFound={lastFound}
           previouslyFound={previouslyFound}
           setPreviouslyFound={setPreviouslyFound}
+          setIsGameOver
         />
       ) : null}
       <GameArea
@@ -76,6 +78,7 @@ export default function Play({
         previouslyFound={previouslyFound}
         allPositions={allPositions}
         setShowModal={setShowModal}
+        isGameOver={isGameOver}
       />
     </>
   );
