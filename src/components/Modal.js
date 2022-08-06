@@ -67,7 +67,7 @@ export const Modal = ({
           className="thumbnail"
           // onClick={validateFind}
         />
-        <span>{person.name}</span>
+        <span className="person-name-span">{person.name}</span>
         {previouslyFound.includes(person.name) && (
           <span>
             <GiCheckMark color="green" />

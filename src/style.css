@@ -129,7 +129,13 @@ body {
   .person-preview {
     display: flex;
     justify-content: center;
-    
+    background-color: white;
+  }
+
+
+  .person-preview:hover,
+  .person-preview:active {
+    background-color: var(--cool-cream);
   }
 
   .thumbnail {
@@ -276,6 +282,15 @@ body {
     .modal > h4 {
       margin-left: 5%;
       margin-top: 7%;
+      color: var(--cool-blue);
+    }
+
+    .person-name-span {
+      color: var(--cool-blue);
+    }
+
+    .person-name-span::first-letter {
+      text-transform: capitalize;
     }
 
 
@@ -292,6 +307,7 @@ body {
   .person-preview > span {
     width: 100%;
   }
+
 
   .thumbnail {
     max-width: 36%;

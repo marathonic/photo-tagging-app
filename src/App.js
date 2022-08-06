@@ -2,7 +2,7 @@ import GameArea from "./components/GameArea";
 import Header from "./components/Header";
 import Play from "./pages/Play";
 import React, { useState, useEffect } from "react";
-import { Route, Routes, Link } from "react-router-dom";
+import { Route, Routes, Link, useLocation } from "react-router-dom";
 import { Modal } from "./components/Modal";
 import db from "./firebase";
 import { onSnapshot, collection } from "firebase/firestore";
@@ -39,13 +39,18 @@ export default function App() {
 
   console.log(previouslyFound);
 
+  const location = useLocation();
+  const rectangularNav = {
+    borderRadius: location.pathname === "/play" ? "0px" : "",
+  };
+
   return (
     // Pages (from left to right on navbar):
     // i Information
     // Play (level select), game controller icon
     // Leaderboards
     <>
-      <nav className="nav-bar">
+      <nav className="nav-bar" style={rectangularNav}>
         <ul className="nav-ul">
           <li>
             <Link to="/">Home</Link>
