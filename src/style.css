@@ -245,6 +245,36 @@ body {
     cursor: pointer;
   }
 
+  .victory-modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 100vh;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+  }
+  .victory-modal-container .victory-modal {
+    z-index: 1;
+    width: 42%;
+    height: 20%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    /* position: relative; */
+    animation: animate 0.3s;
+    
+    /* my styling */
+    flex-wrap: wrap;
+    overflow: scroll;
+  }
+
   @keyframes animate {
     from {
       transform: scale(0.5);

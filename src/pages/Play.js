@@ -70,7 +70,13 @@ export default function Play({
           setPreviouslyFound={setPreviouslyFound}
         />
       ) : null}
-      <GameArea clickPosition={clickPosition} openModal={openModal} />
+      <GameArea
+        clickPosition={clickPosition}
+        openModal={openModal}
+        previouslyFound={previouslyFound}
+        allPositions={allPositions}
+        setShowModal={setShowModal}
+      />
     </>
   );
 }

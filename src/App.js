@@ -22,7 +22,7 @@ export default function App() {
   const [devClickPosition, setDevClickPosition] = useState([]);
   const [allPositions, setAllPositions] = useState([]);
   const [previouslyFound, setPreviouslyFound] = useState([]);
-
+  const [isGameOver, setIsGameOver] = useState(false);
   const openModal = (lastPosition) => {
     setShowModal(true);
   };
@@ -36,6 +36,12 @@ export default function App() {
       ),
     []
   );
+
+  useEffect(() => {
+    if (isGameOver) {
+      setShowModal(false);
+    }
+  }, [isGameOver]);
 
   console.log(previouslyFound);
 
