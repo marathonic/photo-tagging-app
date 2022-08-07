@@ -285,6 +285,76 @@ body {
     overflow: scroll;
   }
 
+  .victory-modal-container .victory-modal {
+    flex-direction: column;
+    justify-content: space-around;
+    border: solid var(--cool-pink) 5px;
+    overflow: hidden;
+  }
+  
+  .victory-modal-container .victory-modal {
+  text-align: center;
+    height: max-content;
+    /* max-height: 50%; */
+    background-color: var(--cool-cream);
+
+
+    /* accounting for booping pupper */
+    position: absolute;
+  }
+
+  .victory-modal > * {
+    margin: 1%;
+  }
+
+
+  .victory-modal > h5 {
+    font-size: 2rem;
+    color: crimson;
+  }
+
+  .victory-pupper {
+    width: 30%;
+  }
+
+  .victory-pupper:active {
+    width: 33%;
+  }
+
+  /* victory modal button */
+  .victory-modal > button {
+    width: 70%;
+    height: 1.5rem;
+    min-height: max-content;
+    background-color: var(--cool-cream);
+    background-color: var(--cool-pink);
+    border: solid var(--cool-blue) 1px;
+    color: var(--cool-teal);
+    color: var(--cool-cream);
+    font-weight: bold;
+    font-size: 120%;
+  }
+
+  .victory-modal > button:hover,
+  .victory-modal > button:active {
+    cursor: pointer;
+    background-color: rgb(211, 57, 88);
+    border: transparent;
+  }
+
+  .victory-modal > p {
+    font-size: 100%;
+    font-style: italic;
+    color: var(--cool-teal);
+  }
+
+  .victory-input {
+    width: 70%;
+    font-size: 1.1rem;
+    text-align: center;
+    letter-spacing: 1px;
+    color: crimson;
+  }
 
   @keyframes animate {
     from {
@@ -390,6 +460,29 @@ body {
 
   .finder-thumbnail {
     max-width: 60%;
+  }
+
+
+  .victory-modal > p {
+    font-size: 70%;
+  }
+
+  .victory-input {
+    width: 80%;
+    font-size: 0.6rem;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+
+  .victory-modal > button {
+    width: 80%;
+    height: 1.5rem;
+    min-height: max-content;
+    background-color: var(--cool-cream);
+    border: solid var(--cool-blue) 1px;
+    color: var(--cool-teal);
+    font-weight: bold;
+    font-size: 60%;
   }
 
   }
