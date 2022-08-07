@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 export default function GameArea({
   clickPosition,
   showSelectionModal,
@@ -5,9 +7,14 @@ export default function GameArea({
   previouslyFound,
   allPositions,
   setShowModal,
+  isGameOver,
 }) {
   const VictoryModal = () => {
-    setShowModal(false);
+    useEffect(() => {
+      setShowModal(false);
+      alert("closing modal from victoryModal");
+    }, []);
+
     return (
       <div className="victory-modal-container">
         <div className="victory-modal">
@@ -22,7 +29,7 @@ export default function GameArea({
 
   return (
     <div className="game-area-container">
-      {previouslyFound.length === allPositions.length ? <VictoryModal /> : null}
+      {previouslyFound.length === 4 ? <VictoryModal /> : null}
       <img
         id="img_ID"
         src="./superheroes-edit.jpg"

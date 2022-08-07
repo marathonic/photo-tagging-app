@@ -53,6 +53,7 @@ export const Modal = ({
     setPreviouslyFound((prevFound) => [...prevFound, selectedPerson]);
     if (previouslyFound.length === allPositions.length) {
       setIsGameOver(true);
+      alert("setting game over from newValidation inside Modal");
     }
   };
 

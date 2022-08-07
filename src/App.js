@@ -40,6 +40,7 @@ export default function App() {
   useEffect(() => {
     if (isGameOver) {
       setShowModal(false);
+      alert("closing modal from App js");
     }
   }, [isGameOver]);
 
