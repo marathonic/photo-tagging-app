@@ -12,7 +12,6 @@ export default function GameArea({
   const VictoryModal = () => {
     useEffect(() => {
       setShowModal(false);
-      alert("closing modal from victoryModal");
     }, []);
 
     return (

@@ -245,6 +245,16 @@ body {
     cursor: pointer;
   }
 
+
+  .person-name-span {
+    color: var(--cool-blue);
+  }
+
+  .person-name-span::first-letter {
+    text-transform: capitalize;
+  }
+
+
   .victory-modal-container {
     position: fixed;
     top: 0;
@@ -274,6 +284,7 @@ body {
     flex-wrap: wrap;
     overflow: scroll;
   }
+
 
   @keyframes animate {
     from {
@@ -344,13 +355,6 @@ body {
       color: var(--cool-blue);
     }
 
-    .person-name-span {
-      color: var(--cool-blue);
-    }
-
-    .person-name-span::first-letter {
-      text-transform: capitalize;
-    }
 
 
   .thumbnails-div {
