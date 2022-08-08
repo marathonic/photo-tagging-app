@@ -12,6 +12,7 @@
     --cool-pink: #acc6aa;
     --cool-teal: #71a0a5;
     --cool-blue: #77628c;
+    --cool-watermelon: #d33958;
 }
 
 html {
@@ -310,7 +311,8 @@ body {
 
   .victory-modal > h5 {
     font-size: 2rem;
-    color: crimson;
+    /* color: crimson; */
+    color: var(--cool-watermelon);
   }
 
   .victory-pupper {
@@ -338,8 +340,10 @@ body {
   .victory-modal > button:hover,
   .victory-modal > button:active {
     cursor: pointer;
-    background-color: rgb(211, 57, 88);
+    /* background-color: #d33958; */
+    background-color: var(--cool-watermelon);
     border: transparent;
+    color: var(--cool-cream);
   }
 
   .victory-modal > p {
@@ -354,6 +358,10 @@ body {
     text-align: center;
     letter-spacing: 1px;
     color: crimson;
+  }
+
+  .victory-modal > .stopwatch-span {
+    color: var(--cool-blue);
   }
 
   @keyframes animate {
@@ -451,6 +459,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin-left: 7%;
   }
 
   .finder-li {
@@ -459,9 +468,18 @@ body {
   }
 
   .finder-thumbnail {
+    min-width: 49%;
     max-width: 60%;
   }
 
+  .finder-thumbnail:last-of-type {
+    max-width: 42%;
+  }
+
+
+  .victory-pupper {
+    width: 42%;
+  }
 
   .victory-modal > p {
     font-size: 70%;
@@ -469,7 +487,7 @@ body {
 
   .victory-input {
     width: 80%;
-    font-size: 0.6rem;
+    font-size: 0.8rem;
     text-align: center;
     letter-spacing: 1px;
   }
@@ -483,6 +501,11 @@ body {
     color: var(--cool-teal);
     font-weight: bold;
     font-size: 60%;
+  }
+
+  .victory-modal > .stopwatch-span {
+    font-size: 90%;
+    
   }
 
   }

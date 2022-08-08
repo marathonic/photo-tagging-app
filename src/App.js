@@ -23,6 +23,9 @@ export default function App() {
   const [allPositions, setAllPositions] = useState([]);
   const [previouslyFound, setPreviouslyFound] = useState([]);
   const [isGameOver, setIsGameOver] = useState(false);
+  const [startTime, setStartTime] = useState(0);
+  const [endTime, setEndTime] = useState(0);
+
   const openModal = (lastPosition) => {
     setShowModal(true);
   };
@@ -94,6 +97,10 @@ export default function App() {
               setShowModal={setShowModal}
               setIsGameOver={setIsGameOver}
               isGameOver={isGameOver}
+              startTime={startTime}
+              setStartTime={setStartTime}
+              endTime={endTime}
+              setEndTime={setEndTime}
             />
           }
         />

@@ -1,6 +1,6 @@
 import BountyBar from "../components/Header";
 import GameArea from "../components/GameArea";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Modal } from "../components/Modal";
 
 export default function Play({
@@ -17,8 +17,18 @@ export default function Play({
   lastFound,
   setPreviouslyFound,
   isGameOver,
+  startTime,
+  setStartTime,
+  endTime,
+  setEndTime,
+  setIsGameOver,
 }) {
   console.log(allPositions);
+  useEffect(() => {
+    // We may wish to subtract some time to make up for the time it takes to get the image from the server and load the page.
+    // console.log("Start the timer!");
+    setStartTime(new Date());
+  }, [setStartTime]);
 
   const clickPosition = (e) => {
     const xCoord = Math.round(
@@ -69,7 +79,8 @@ export default function Play({
           lastFound={lastFound}
           previouslyFound={previouslyFound}
           setPreviouslyFound={setPreviouslyFound}
-          setIsGameOver
+          setIsGameOver={setIsGameOver}
+          setEndTime={setEndTime}
         />
       ) : null}
       <GameArea
@@ -79,6 +90,10 @@ export default function Play({
         allPositions={allPositions}
         setShowModal={setShowModal}
         isGameOver={isGameOver}
+        startTime={startTime}
+        setStartTime={setStartTime}
+        endTime={endTime}
+        setEndTime={setEndTime}
       />
     </>
   );
