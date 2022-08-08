@@ -1,21 +1,33 @@
 import { useEffect, useState } from "react";
 import { BsStopwatch } from "react-icons/bs";
-import db from "./firebase";
-import { collection, addDoc } from "firebase/firestore";
+import db from "../firebase";
+import {
+  onSnapshot,
+  collection,
+  setDoc,
+  doc,
+  addDoc,
+} from "firebase/firestore";
 
 export default function GameArea({
   clickPosition,
-  showSelectionModal,
-  openModal,
   previouslyFound,
-  allPositions,
   setShowModal,
-  isGameOver,
   startTime,
-  setStartTime,
-  endTime,
-  setEndTime,
+  setGameTime,
 }) {
+  const handleNew = async () => {
+    const docRef = await addDoc(collection(db, "scores"), {
+      name: "getNameFromInputState",
+      //  time: gameTime,
+      time: Math.abs(new Date() - startTime),
+    });
+    await setDoc(docRef);
+
+    // const docRef = doc(db, "scores");
+    // await setDoc(docRef, payload);
+  };
+
   const VictoryModal = () => {
     // Should we setEndTime here? I think it's better if we do that over in Modal.js, Line 54 or 53
     useEffect(() => {
@@ -26,15 +38,14 @@ export default function GameArea({
     // After sorting, re-use the code below to display
     //  each time in a human-readable way.
     const timeDiff = Math.abs(new Date() - startTime);
-
     // Update object to include the game time
     // But wait, we need a different collection!
     // Edit: We've created a "scores" collection in Firestore.
     // We need to figure out how to get the ID of the object inside of the scores collection.
     // So we're looking for: scores --> IDabcdefgID?? --> then, assign a time: value,
     // DUH we just create a new one!
-    const scoreObjID = 
-    const scoreRef = doc(db, "scores", );
+    // Why can't we use await here?
+    // Edit: Because this isn't an async function! We're moving all the code that was below here before to a function in App.js
 
     let inSeconds = (timeDiff / 1000).toFixed(2);
     let inMinutes = null;
@@ -58,7 +69,7 @@ export default function GameArea({
           />
           <p>*boop*</p>
           <input placeholder="Your Name" className="victory-input"></input>
-          <button>OK</button>
+          <button onClick={async () => handleNew()}>OK</button>
         </div>
       </div>
     );

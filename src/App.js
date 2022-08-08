@@ -5,7 +5,13 @@ import React, { useState, useEffect } from "react";
 import { Route, Routes, Link, useLocation } from "react-router-dom";
 import { Modal } from "./components/Modal";
 import db from "./firebase";
-import { onSnapshot, collection } from "firebase/firestore";
+import {
+  onSnapshot,
+  collection,
+  setDoc,
+  doc,
+  addDoc,
+} from "firebase/firestore";
 import Home from "./pages/Home";
 
 export default function App() {
@@ -25,6 +31,7 @@ export default function App() {
   const [isGameOver, setIsGameOver] = useState(false);
   const [startTime, setStartTime] = useState(0);
   const [endTime, setEndTime] = useState(0);
+  const [gameTime, setGameTime] = useState(0);
 
   const openModal = (lastPosition) => {
     setShowModal(true);
@@ -101,6 +108,7 @@ export default function App() {
               setStartTime={setStartTime}
               endTime={endTime}
               setEndTime={setEndTime}
+              setGameTime={setGameTime}
             />
           }
         />
