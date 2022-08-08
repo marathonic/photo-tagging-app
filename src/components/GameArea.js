@@ -16,17 +16,25 @@ export default function GameArea({
   startTime,
   setGameTime,
 }) {
-  const handleNew = async () => {
-    const docRef = await addDoc(collection(db, "scores"), {
-      name: "getNameFromInputState",
-      //  time: gameTime,
-      time: Math.abs(new Date() - startTime),
-    });
-    await setDoc(docRef);
+  const [myScore, setMyScore] = useState(
+    Math.abs(new Date() - startTime) / 1000
+  );
 
-    // const docRef = doc(db, "scores");
-    // await setDoc(docRef, payload);
+  const handleNew = async () => {
+    const runtime = Math.abs(new Date() - startTime);
+    const docRef = await addDoc(collection(db, "scores"), {
+      name: "newTest",
+      time: runtime,
+    });
+    setDoc(docRef);
   };
+
+  async function createScore(name, score) {
+    await addDoc(collection(db, "scores"), {
+      name: name,
+      score: score,
+    });
+  }
 
   const VictoryModal = () => {
     // Should we setEndTime here? I think it's better if we do that over in Modal.js, Line 54 or 53
@@ -69,7 +77,10 @@ export default function GameArea({
           />
           <p>*boop*</p>
           <input placeholder="Your Name" className="victory-input"></input>
-          <button onClick={async () => handleNew()}>OK</button>
+          {/* <button onClick={async () => handleNew()}>OK</button> */}
+          <button onClick={async () => createScore("randomName", myScore)}>
+            OK
+          </button>
         </div>
       </div>
     );
