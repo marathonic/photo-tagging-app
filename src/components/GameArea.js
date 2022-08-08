@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { BsStopwatch } from "react-icons/bs";
+import db from "./firebase";
+import { collection, addDoc } from "firebase/firestore";
 
 export default function GameArea({
   clickPosition,
@@ -24,6 +26,16 @@ export default function GameArea({
     // After sorting, re-use the code below to display
     //  each time in a human-readable way.
     const timeDiff = Math.abs(new Date() - startTime);
+
+    // Update object to include the game time
+    // But wait, we need a different collection!
+    // Edit: We've created a "scores" collection in Firestore.
+    // We need to figure out how to get the ID of the object inside of the scores collection.
+    // So we're looking for: scores --> IDabcdefgID?? --> then, assign a time: value,
+    // DUH we just create a new one!
+    const scoreObjID = 
+    const scoreRef = doc(db, "scores", );
+
     let inSeconds = (timeDiff / 1000).toFixed(2);
     let inMinutes = null;
     if (inSeconds > 60) {
