@@ -16,9 +16,7 @@ export default function GameArea({
   startTime,
   setGameTime,
 }) {
-  const [myScore, setMyScore] = useState(
-    Math.abs(new Date() - startTime) / 1000
-  );
+  let myScore = 0;
 
   const handleNew = async () => {
     const runtime = Math.abs(new Date() - startTime);
@@ -46,6 +44,7 @@ export default function GameArea({
     // After sorting, re-use the code below to display
     //  each time in a human-readable way.
     const timeDiff = Math.abs(new Date() - startTime);
+    myScore = timeDiff;
     // Update object to include the game time
     // But wait, we need a different collection!
     // Edit: We've created a "scores" collection in Firestore.
@@ -78,7 +77,11 @@ export default function GameArea({
           <p>*boop*</p>
           <input placeholder="Your Name" className="victory-input"></input>
           {/* <button onClick={async () => handleNew()}>OK</button> */}
-          <button onClick={async () => createScore("randomName", myScore)}>
+          <button
+            onClick={async () =>
+              createScore("newestUltraNewRandomName", myScore)
+            }
+          >
             OK
           </button>
         </div>
