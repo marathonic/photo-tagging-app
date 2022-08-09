@@ -16,6 +16,8 @@ export default function GameArea({
   startTime,
   setGameTime,
 }) {
+  // What do we need to do?
+
   let myScore = 0;
 
   const handleNew = async () => {
@@ -35,6 +37,11 @@ export default function GameArea({
   }
 
   const VictoryModal = () => {
+    const [inputThing, setInputThing] = useState("");
+
+    const handleChange = (e) => {
+      setInputThing(e.target.value);
+    };
     // Should we setEndTime here? I think it's better if we do that over in Modal.js, Line 54 or 53
     useEffect(() => {
       setShowModal(false);
@@ -75,13 +82,14 @@ export default function GameArea({
             alt="a corgi dog"
           />
           <p>*boop*</p>
-          <input placeholder="Your Name" className="victory-input"></input>
+          <input
+            placeholder="Your Name"
+            className="victory-input"
+            value={inputThing}
+            onChange={handleChange}
+          ></input>
           {/* <button onClick={async () => handleNew()}>OK</button> */}
-          <button
-            onClick={async () =>
-              createScore("newestUltraNewRandomName", myScore)
-            }
-          >
+          <button onClick={async () => createScore(inputThing, myScore)}>
             OK
           </button>
         </div>
