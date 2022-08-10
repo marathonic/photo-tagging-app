@@ -51,10 +51,16 @@ export const Modal = ({
       return;
     }
     setPreviouslyFound((prevFound) => [...prevFound, selectedPerson]);
-    if (previouslyFound.length === allPositions.length) {
-      setIsGameOver(true);
-      alert("setting game over from newValidation inside Modal");
-    }
+
+    // ---------------------ATTENTION!
+    // Maybe we can figure out another way to check if the game is over
+    // Then, if the game is over, setMyScore(Math.abs(new Date() - startTime))
+
+    // if (previouslyFound.length === 4) {
+    //   alert("the game is over! -Modal");
+    //   setIsGameOver(true);
+    //   alert("setting game over from newValidation inside Modal");
+    // }
   };
 
   console.log("previouslyFound: ");
