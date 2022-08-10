@@ -13,6 +13,7 @@ import {
   addDoc,
 } from "firebase/firestore";
 import Home from "./pages/Home";
+import Scores from "./pages/Scores";
 
 export default function App() {
   const [showModal, setShowModal] = useState(false);
@@ -78,10 +79,11 @@ export default function App() {
           </li>
 
           <li>
-            <Link to="/scoreboard">Scores</Link>
+            <Link to="/scores">Scores</Link>
           </li>
         </ul>
       </nav>
+      {/* Show bar */}
       {location.pathname === "/play" && (
         <BountyBar
           allPositions={allPositions}
@@ -90,6 +92,7 @@ export default function App() {
       )}
       <Routes>
         <Route path="/" element={<Home allPositions={allPositions} />}></Route>
+        <Route path="/scores" element={<Scores />}></Route>
         <Route
           path="/play"
           element={
