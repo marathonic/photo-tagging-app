@@ -1,18 +1,32 @@
 export default function Scores({ scores }) {
+  let place = 0;
   return (
     <section className="scores-container">
       <h5>Scores</h5>
       <table className="scores-table">
         <tbody>
           <tr>
+            <th></th>
             <th>Name</th>
             <th>Score</th>
           </tr>
           {scores.map((user) => {
+            let inSeconds = (user.score / 1000).toFixed(2);
+            // let inMinutes = null;
+            // if (inSeconds > 60) {
+            //   let mins = Math.floor(user.score / 6000);
+            //   let secs = ((user.score % 6000) / 1000).toFixed(0);
+            //   inMinutes = mins + "Min, " + secs < 10 ? "0" : "" + secs + "S";
+            // }
+
+            const formattedTime = inSeconds + " s";
+            // const formattedTime = inSeconds < 60 ? inSeconds + " s" : inMinutes;
+
             return (
               <tr key={user.id}>
+                <td>{(place = place + 1)}</td>
                 <td>{user.name}</td>
-                <td>{user.score}</td>
+                <td>{formattedTime}</td>
               </tr>
             );
           })}

@@ -57,7 +57,7 @@ export default function App() {
   //  get the high scores and arrange in descending order
   useEffect(() => {
     const collectionRef = collection(db, "scores");
-    const q = query(collectionRef, orderBy("score", "desc"));
+    const q = query(collectionRef, orderBy("score", "asc"));
     const unsub = onSnapshot(q, (snapshot) =>
       setScores(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
     );

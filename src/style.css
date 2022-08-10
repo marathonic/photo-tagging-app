@@ -364,6 +364,26 @@ body {
     color: var(--cool-blue);
   }
 
+  .scores-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .scores-table th {
+    background-color: var(--cool-pink);
+    width: 20%;
+
+  }
+
+  .scores-table td {
+    border-bottom: solid 1px var(--cool-teal);
+  }
+
   @keyframes animate {
     from {
       transform: scale(0.5);

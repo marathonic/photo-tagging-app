@@ -62,19 +62,21 @@ export default function GameArea({
     // Edit: Because this isn't an async function! We're moving all the code that was below here before to a function in App.js
 
     let inSeconds = (totalTime / 1000).toFixed(2);
-    let inMinutes = null;
-    if (inSeconds > 60) {
-      let mins = Math.floor(totalTime / 6000);
-      let secs = ((totalTime % 6000) / 1000).toFixed(0);
-      inMinutes = mins + "Min, " + secs < 10 ? "0" : "" + secs + "S";
-    }
+    let formattedSeconds = inSeconds + " s";
+    // let inMinutes = null;
+    // if (inSeconds > 60) {
+    //   let mins = Math.floor(totalTime / 6000);
+    //   let secs = ((totalTime % 6000) / 1000).toFixed(0);
+    //   inMinutes = mins + "Min, " + secs < 10 ? "0" : "" + secs + "S";
+    // }
 
     return (
       <div className="victory-modal-container">
         <div className="victory-modal">
           <h5>You win!</h5>
           <span className="stopwatch-span">
-            <BsStopwatch /> {inSeconds < 60 ? inSeconds + " s" : inMinutes}
+            <BsStopwatch /> {formattedSeconds}
+            {/* <BsStopwatch /> {inSeconds < 60 ? inSeconds + " s" : inMinutes} */}
           </span>
           <img
             src="https://www.pngmart.com/files/12/Cute-Corgi-Dog-Transparent-Background.png"
