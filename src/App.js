@@ -11,6 +11,8 @@ import {
   setDoc,
   doc,
   addDoc,
+  query,
+  orderBy,
 } from "firebase/firestore";
 import Home from "./pages/Home";
 import Scores from "./pages/Scores";
@@ -35,11 +37,13 @@ export default function App() {
   const [gameTime, setGameTime] = useState(0);
   const [myScore, setMyScore] = useState(0);
   const [totalTime, setTotalTime] = useState(0);
+  const [scores, setScores] = useState([]);
 
   const openModal = (lastPosition) => {
     setShowModal(true);
   };
 
+  // configure the coordinates
   useEffect(
     () =>
       onSnapshot(collection(db, "positions"), (snapshot) =>
@@ -50,7 +54,17 @@ export default function App() {
     []
   );
 
-  // Here!
+  //  get the high scores and arrange in descending order
+  useEffect(() => {
+    const collectionRef = collection(db, "scores");
+    const q = query(collectionRef, orderBy("score", "desc"));
+    const unsub = onSnapshot(q, (snapshot) =>
+      setScores(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+    );
+    return unsub;
+  }, []);
+
+  // Try switching to if(previouslyFound.length === allPositions.length)
   useEffect(() => {
     if (previouslyFound.length === 4) {
       setIsGameOver(true);
@@ -92,7 +106,7 @@ export default function App() {
       )}
       <Routes>
         <Route path="/" element={<Home allPositions={allPositions} />}></Route>
-        <Route path="/scores" element={<Scores />}></Route>
+        <Route path="/scores" element={<Scores scores={scores} />}></Route>
         <Route
           path="/play"
           element={

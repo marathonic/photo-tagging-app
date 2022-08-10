@@ -1,5 +1,4 @@
-export default function Scores() {
-  const scoresArr = [{ name: "exampleName", score: 1000000, id: "idee" }];
+export default function Scores({ scores }) {
   return (
     <section className="scores-container">
       <h5>Scores</h5>
@@ -9,7 +8,7 @@ export default function Scores() {
             <th>Name</th>
             <th>Score</th>
           </tr>
-          {scoresArr.map((user) => {
+          {scores.map((user) => {
             return (
               <tr key={user.id}>
                 <td>{user.name}</td>
