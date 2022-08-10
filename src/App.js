@@ -33,6 +33,7 @@ export default function App() {
   const [endTime, setEndTime] = useState(0);
   const [gameTime, setGameTime] = useState(0);
   const [myScore, setMyScore] = useState(0);
+  const [totalTime, setTotalTime] = useState(0);
 
   const openModal = (lastPosition) => {
     setShowModal(true);
@@ -52,9 +53,10 @@ export default function App() {
   useEffect(() => {
     if (previouslyFound.length === 4) {
       setIsGameOver(true);
+      setTotalTime(Math.abs(new Date() - startTime));
       alert("setIsGameOver from useEffect in App js");
     }
-  }, [previouslyFound]);
+  }, [previouslyFound, startTime]);
 
   console.log(previouslyFound);
 
@@ -113,6 +115,7 @@ export default function App() {
               setGameTime={setGameTime}
               myScore={myScore}
               setMyScore={setMyScore}
+              totalTime={totalTime}
             />
           }
         />

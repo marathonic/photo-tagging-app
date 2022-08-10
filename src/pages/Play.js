@@ -24,6 +24,7 @@ export default function Play({
   setIsGameOver,
   myScore,
   setMyScore,
+  totalTime,
 }) {
   console.log(allPositions);
   useEffect(() => {
@@ -98,6 +99,7 @@ export default function Play({
         setEndTime={setEndTime}
         myScore={myScore}
         setMyScore={setMyScore}
+        totalTime={totalTime}
       />
     </>
   );

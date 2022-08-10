@@ -15,15 +15,12 @@ export default function GameArea({
   setShowModal,
   startTime,
   setGameTime,
-  myScore,
-  setMyScore,
+  totalTime,
+  setTotalTime,
 }) {
   // What do we need to do?
   // The code below just gives us 0.something seconds.
   // EDIT: READ MODAL LINE 55
-  useEffect(() => {
-    setMyScore(Math.abs(new Date() - startTime));
-  }, [setMyScore, startTime]);
 
   const handleNew = async () => {
     const runtime = Math.abs(new Date() - startTime);
@@ -52,7 +49,7 @@ export default function GameArea({
       setShowModal(false);
     }, []);
 
-    // Store myScore vars to our Firestore for comparison.
+    // Store totalTime vars to our Firestore for comparison.
     // After sorting, re-use the code below to display
     //  each time in a human-readable way.
     // Update object to include the game time
@@ -64,11 +61,11 @@ export default function GameArea({
     // Why can't we use await here?
     // Edit: Because this isn't an async function! We're moving all the code that was below here before to a function in App.js
 
-    let inSeconds = (myScore / 1000).toFixed(2);
+    let inSeconds = (totalTime / 1000).toFixed(2);
     let inMinutes = null;
     if (inSeconds > 60) {
-      let mins = Math.floor(myScore / 6000);
-      let secs = ((myScore % 6000) / 1000).toFixed(0);
+      let mins = Math.floor(totalTime / 6000);
+      let secs = ((totalTime % 6000) / 1000).toFixed(0);
       inMinutes = mins + "Min, " + secs < 10 ? "0" : "" + secs + "S";
     }
 
@@ -92,7 +89,7 @@ export default function GameArea({
             onChange={handleChange}
           ></input>
           {/* <button onClick={async () => handleNew()}>OK</button> */}
-          <button onClick={async () => createScore(inputThing, myScore)}>
+          <button onClick={async () => createScore(inputThing, totalTime)}>
             OK
           </button>
         </div>
