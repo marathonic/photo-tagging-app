@@ -35,7 +35,8 @@ export default function GameArea({
     const [inputThing, setInputThing] = useState("");
 
     const handleChange = (e) => {
-      setInputThing(e.target.value);
+      const { value } = e.target;
+      if (value.match("/^[A-Za-z0-9]+$/i")) setInputThing(value);
     };
     // Should we setEndTime here? I think it's better if we do that over in Modal.js, Line 54 or 53
     useEffect(() => {
@@ -65,6 +66,8 @@ export default function GameArea({
             value={inputThing}
             onChange={handleChange}
             disabled={conditionalDisabled}
+            required
+            title="please provide a name"
           ></input>
           {/* <button onClick={async () => handleNew()}>OK</button> */}
           <button
