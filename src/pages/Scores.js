@@ -2,7 +2,7 @@ export default function Scores({ scores }) {
   let place = 0;
   return (
     <section className="scores-container">
-      <h5>Hall of Fame</h5>
+      <h5 className="hall-fame">Hall of Fame</h5>
       <table className="scores-table">
         <tbody>
           <tr>

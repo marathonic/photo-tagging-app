@@ -390,6 +390,12 @@ body {
     border-right: solid 1px var(--cool-pink);
   }
 
+  .hall-fame {
+    color: var(--cool-watermelon);
+    color: darkgray;
+    font-size: 300%;
+  }
+
   @keyframes animate {
     from {
       transform: scale(0.5);

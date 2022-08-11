@@ -3,6 +3,7 @@ import { BsStopwatch } from "react-icons/bs";
 import db from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import profaneWords from "profane-words";
 
 export default function GameArea({
   clickPosition,
@@ -18,8 +19,13 @@ export default function GameArea({
 }) {
   const [conditionalDisabled, setConditionalDisabled] = useState(false);
   const navigate = useNavigate();
+  // x profane word:
+  // const arg = process.argv[2];
 
   async function createScore(name, score) {
+    if (profaneWords.includes(name.toLowerCase())) {
+      name = "bonk";
+    }
     await addDoc(collection(db, "scores"), {
       name: name,
       score: score,
@@ -35,8 +41,8 @@ export default function GameArea({
     const [inputThing, setInputThing] = useState("");
 
     const handleChange = (e) => {
-      const { value } = e.target;
-      if (value.match("/^[A-Za-z0-9]+$/i")) setInputThing(value);
+      const val = e.target.value;
+      setInputThing(val);
     };
     // Should we setEndTime here? I think it's better if we do that over in Modal.js, Line 54 or 53
     useEffect(() => {
@@ -66,7 +72,7 @@ export default function GameArea({
             value={inputThing}
             onChange={handleChange}
             disabled={conditionalDisabled}
-            required
+            required={true}
             title="please provide a name"
           ></input>
           {/* <button onClick={async () => handleNew()}>OK</button> */}
