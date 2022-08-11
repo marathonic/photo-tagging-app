@@ -18,11 +18,17 @@ export default function GameArea({
   setTotalTime,
 }) {
   const [conditionalDisabled, setConditionalDisabled] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const navigate = useNavigate();
   // x profane word:
   // const arg = process.argv[2];
 
   async function createScore(name, score) {
+    if (name.trim() === "") {
+      // alert("empty input");
+      return;
+    }
+
     if (profaneWords.includes(name.toLowerCase())) {
       name = "bonk";
     }
@@ -30,6 +36,8 @@ export default function GameArea({
       name: name,
       score: score,
     });
+
+    goToScores();
   }
 
   const goToScores = () => {
@@ -42,6 +50,12 @@ export default function GameArea({
 
     const handleChange = (e) => {
       const val = e.target.value;
+      // if (val.trim() !== "") {
+      //   setIsButtonDisabled(false);
+      // }
+      // if (val.trim() !== "") {
+      //   setIsButtonDisabled(false);
+      // }
       setInputThing(val);
     };
     // Should we setEndTime here? I think it's better if we do that over in Modal.js, Line 54 or 53
@@ -52,6 +66,15 @@ export default function GameArea({
 
     let inSeconds = (totalTime / 1000).toFixed(2);
     let formattedSeconds = inSeconds + " s";
+    const conditionalEmphasis = {
+      border: isButtonDisabled ? "crimson 4px solid" : "",
+      borderRadius: isButtonDisabled ? "6px" : "",
+    };
+
+    const conditionalBtnStyle = {
+      opacity: isButtonDisabled ? "90%" : "",
+      // backgroundColor: isButtonDisabled ? "transparent" : "",
+    };
 
     return (
       <div className="victory-modal-container">
@@ -72,18 +95,19 @@ export default function GameArea({
             value={inputThing}
             onChange={handleChange}
             disabled={conditionalDisabled}
+            style={conditionalEmphasis}
             required={true}
             title="please provide a name"
           ></input>
           {/* <button onClick={async () => handleNew()}>OK</button> */}
           <button
-            disabled={conditionalDisabled}
+            disabled={isButtonDisabled}
+            style={conditionalBtnStyle}
             onClick={async () => {
               createScore(inputThing, totalTime);
-              goToScores();
             }}
           >
-            OK
+            {isButtonDisabled ? "Enter name to proceed" : "OK"}
           </button>
         </div>
       </div>
