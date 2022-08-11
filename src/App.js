@@ -28,7 +28,6 @@ export default function App() {
     y: 0,
   });
   const [lastFound, setLastFound] = useState("");
-  const [devClickPosition, setDevClickPosition] = useState([]);
   const [allPositions, setAllPositions] = useState([]);
   const [previouslyFound, setPreviouslyFound] = useState([]);
   const [isGameOver, setIsGameOver] = useState(false);
@@ -133,6 +132,7 @@ export default function App() {
               myScore={myScore}
               setMyScore={setMyScore}
               totalTime={totalTime}
+              setTotalTime={setTotalTime}
             />
           }
         />

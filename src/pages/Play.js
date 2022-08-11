@@ -1,4 +1,3 @@
-import BountyBar from "../components/Header";
 import GameArea from "../components/GameArea";
 import { useState, useEffect } from "react";
 import { Modal } from "../components/Modal";
@@ -25,11 +24,28 @@ export default function Play({
   myScore,
   setMyScore,
   totalTime,
+  setTotalTime,
 }) {
-  console.log(allPositions);
+  // console.log(allPositions);
+
+  // Reset everything to start a new game when page loads.
   useEffect(() => {
-    // We may wish to subtract some time to make up for the time it takes to get the image from the server and load the page.
-    // console.log("Start the timer!");
+    setPreviouslyFound([]);
+    setLastFound("");
+    setIsGameOver(false);
+    setEndTime(0);
+    setMyScore(0);
+    setTotalTime(0);
+  }, [
+    setPreviouslyFound,
+    setLastFound,
+    setIsGameOver,
+    setEndTime,
+    setMyScore,
+    setTotalTime,
+  ]);
+
+  useEffect(() => {
     setStartTime(new Date());
   }, [setStartTime]);
 
@@ -100,6 +116,10 @@ export default function Play({
         myScore={myScore}
         setMyScore={setMyScore}
         totalTime={totalTime}
+        setPreviouslyFound={setPreviouslyFound}
+        setLastFound={setLastFound}
+        setIsGameOver={setIsGameOver}
+        setTotalTime={setTotalTime}
       />
     </>
   );

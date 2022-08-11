@@ -9,6 +9,12 @@ export default function GameArea({
   previouslyFound,
   setShowModal,
   totalTime,
+  setPreviouslyFound,
+  setLastFound,
+  setIsGameOver,
+  setEndTime,
+  setMyScore,
+  setTotalTime,
 }) {
   const [conditionalDisabled, setConditionalDisabled] = useState(false);
   const navigate = useNavigate();
