@@ -384,6 +384,12 @@ body {
     border-bottom: solid 1px var(--cool-teal);
   }
 
+  .th-name,
+  .td-name {
+    border-left: solid 1px var(--cool-pink);
+    border-right: solid 1px var(--cool-pink);
+  }
+
   @keyframes animate {
     from {
       transform: scale(0.5);

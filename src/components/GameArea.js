@@ -1,35 +1,17 @@
 import { useEffect, useState } from "react";
 import { BsStopwatch } from "react-icons/bs";
 import db from "../firebase";
-import {
-  onSnapshot,
-  collection,
-  setDoc,
-  doc,
-  addDoc,
-} from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 export default function GameArea({
   clickPosition,
   previouslyFound,
   setShowModal,
-  startTime,
-  setGameTime,
   totalTime,
-  setTotalTime,
 }) {
-  // What do we need to do?
-  // The code below just gives us 0.something seconds.
-  // EDIT: READ MODAL LINE 55
-
-  const handleNew = async () => {
-    const runtime = Math.abs(new Date() - startTime);
-    const docRef = await addDoc(collection(db, "scores"), {
-      name: "newTest",
-      time: runtime,
-    });
-    setDoc(docRef);
-  };
+  const [conditionalDisabled, setConditionalDisabled] = useState(false);
+  const navigate = useNavigate();
 
   async function createScore(name, score) {
     await addDoc(collection(db, "scores"), {
@@ -37,6 +19,11 @@ export default function GameArea({
       score: score,
     });
   }
+
+  const goToScores = () => {
+    setConditionalDisabled(true);
+    navigate("/scores");
+  };
 
   const VictoryModal = () => {
     const [inputThing, setInputThing] = useState("");
@@ -47,28 +34,11 @@ export default function GameArea({
     // Should we setEndTime here? I think it's better if we do that over in Modal.js, Line 54 or 53
     useEffect(() => {
       setShowModal(false);
+      setConditionalDisabled(false);
     }, []);
-
-    // Store totalTime vars to our Firestore for comparison.
-    // After sorting, re-use the code below to display
-    //  each time in a human-readable way.
-    // Update object to include the game time
-    // But wait, we need a different collection!
-    // Edit: We've created a "scores" collection in Firestore.
-    // We need to figure out how to get the ID of the object inside of the scores collection.
-    // So we're looking for: scores --> IDabcdefgID?? --> then, assign a time: value,
-    // DUH we just create a new one!
-    // Why can't we use await here?
-    // Edit: Because this isn't an async function! We're moving all the code that was below here before to a function in App.js
 
     let inSeconds = (totalTime / 1000).toFixed(2);
     let formattedSeconds = inSeconds + " s";
-    // let inMinutes = null;
-    // if (inSeconds > 60) {
-    //   let mins = Math.floor(totalTime / 6000);
-    //   let secs = ((totalTime % 6000) / 1000).toFixed(0);
-    //   inMinutes = mins + "Min, " + secs < 10 ? "0" : "" + secs + "S";
-    // }
 
     return (
       <div className="victory-modal-container">
@@ -76,7 +46,6 @@ export default function GameArea({
           <h5>You win!</h5>
           <span className="stopwatch-span">
             <BsStopwatch /> {formattedSeconds}
-            {/* <BsStopwatch /> {inSeconds < 60 ? inSeconds + " s" : inMinutes} */}
           </span>
           <img
             src="https://www.pngmart.com/files/12/Cute-Corgi-Dog-Transparent-Background.png"
@@ -89,9 +58,16 @@ export default function GameArea({
             className="victory-input"
             value={inputThing}
             onChange={handleChange}
+            disabled={conditionalDisabled}
           ></input>
           {/* <button onClick={async () => handleNew()}>OK</button> */}
-          <button onClick={async () => createScore(inputThing, totalTime)}>
+          <button
+            disabled={conditionalDisabled}
+            onClick={async () => {
+              createScore(inputThing, totalTime);
+              goToScores();
+            }}
+          >
             OK
           </button>
         </div>

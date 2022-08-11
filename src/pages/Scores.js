@@ -2,12 +2,12 @@ export default function Scores({ scores }) {
   let place = 0;
   return (
     <section className="scores-container">
-      <h5>Scores</h5>
+      <h5>Hall of Fame</h5>
       <table className="scores-table">
         <tbody>
           <tr>
-            <th></th>
-            <th>Name</th>
+            <th>World Rank</th>
+            <th className="th-name">Name</th>
             <th>Score</th>
           </tr>
           {scores.map((user) => {
@@ -24,8 +24,8 @@ export default function Scores({ scores }) {
 
             return (
               <tr key={user.id}>
-                <td>{(place = place + 1)}</td>
-                <td>{user.name}</td>
+                <td className="td-place">{(place = place + 1)}</td>
+                <td className="td-name">{user.name}</td>
                 <td>{formattedTime}</td>
               </tr>
             );

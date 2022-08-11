@@ -65,11 +65,11 @@ export default function App() {
   }, []);
 
   // Try switching to if(previouslyFound.length === allPositions.length)
+  // We've removed the alert from the useEffect below
   useEffect(() => {
     if (previouslyFound.length === 4) {
       setIsGameOver(true);
       setTotalTime(Math.abs(new Date() - startTime));
-      alert("setIsGameOver from useEffect in App js");
     }
   }, [previouslyFound, startTime]);
 
