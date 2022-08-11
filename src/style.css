@@ -394,6 +394,7 @@ body {
     color: var(--cool-watermelon);
     color: darkgray;
     font-size: 300%;
+    margin-block: 3%;
   }
 
   @keyframes animate {
@@ -541,6 +542,10 @@ body {
   .victory-modal > .stopwatch-span {
     font-size: 90%;
     
+  }
+
+  .hall-fame {
+    margin-block: 9%;
   }
 
   }

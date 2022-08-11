@@ -18,7 +18,7 @@ export default function GameArea({
   setTotalTime,
 }) {
   const [conditionalDisabled, setConditionalDisabled] = useState(false);
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [isInputEmpty, setIsInputEmpty] = useState(false);
   const navigate = useNavigate();
   // x profane word:
   // const arg = process.argv[2];
@@ -26,6 +26,7 @@ export default function GameArea({
   async function createScore(name, score) {
     if (name.trim() === "") {
       // alert("empty input");
+      // setIsInputEmpty(true);
       return;
     }
 
@@ -51,12 +52,13 @@ export default function GameArea({
     const handleChange = (e) => {
       const val = e.target.value;
       // if (val.trim() !== "") {
-      //   setIsButtonDisabled(false);
+      //   setisInputEmpty(false);
       // }
       // if (val.trim() !== "") {
-      //   setIsButtonDisabled(false);
+      //   setisInputEmpty(false);
       // }
-      setInputThing(val);
+      const limit = 18;
+      setInputThing(val.slice(0, limit));
     };
     // Should we setEndTime here? I think it's better if we do that over in Modal.js, Line 54 or 53
     useEffect(() => {
@@ -67,17 +69,22 @@ export default function GameArea({
     let inSeconds = (totalTime / 1000).toFixed(2);
     let formattedSeconds = inSeconds + " s";
     const conditionalEmphasis = {
-      border: isButtonDisabled ? "crimson 4px solid" : "",
-      borderRadius: isButtonDisabled ? "6px" : "",
+      border: isInputEmpty ? "crimson 4px solid" : "",
+      borderRadius: isInputEmpty ? "6px" : "",
     };
 
     const conditionalBtnStyle = {
-      opacity: isButtonDisabled ? "90%" : "",
-      // backgroundColor: isButtonDisabled ? "transparent" : "",
+      opacity: isInputEmpty ? "90%" : "",
+      // backgroundColor: isInputEmpty ? "transparent" : "",
     };
 
     return (
       <div className="victory-modal-container">
+        {/* WE TRIED TO RENDER THIS CONDITIONALLY,
+        a bunch of different ways, like creating [isLoading, setIsLoading]
+        and checking that before rendering either this below, or, a div 
+        that said "Loading...". That div never showed up!
+        Look into implementing a loading animation if possible. */}
         <div className="victory-modal">
           <h5>You win!</h5>
           <span className="stopwatch-span">
@@ -101,13 +108,12 @@ export default function GameArea({
           ></input>
           {/* <button onClick={async () => handleNew()}>OK</button> */}
           <button
-            disabled={isButtonDisabled}
             style={conditionalBtnStyle}
             onClick={async () => {
               createScore(inputThing, totalTime);
             }}
           >
-            {isButtonDisabled ? "Enter name to proceed" : "OK"}
+            {isInputEmpty ? "Enter name to proceed" : "OK"}
           </button>
         </div>
       </div>
