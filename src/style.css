@@ -58,7 +58,8 @@ body {
 .nav-ul a:hover,
 .nav-ul a:active {
   /* color: var(--cool-teal); */
-  text-shadow: 1px 1px var(--cool-cream);
+  /* text-shadow: 1px 1px var(--cool-cream); */
+  color: white;
 }
 
 
@@ -374,13 +375,17 @@ body {
     align-items: center;
   }
 
+  .scores-table {
+    margin-bottom: 5%;
+  }
+
   .scores-table th {
     background-color: var(--cool-pink);
     width: 20%;
-
   }
 
   .scores-table td {
+    padding: 1%;
     border-bottom: solid 1px var(--cool-teal);
   }
 

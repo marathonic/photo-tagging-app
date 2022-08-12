@@ -80,6 +80,7 @@ export default function GameArea({
 
     return (
       <div className="victory-modal-container">
+        {/* ________________________________PLEASE READ: */}
         {/* WE TRIED TO RENDER THIS CONDITIONALLY,
         a bunch of different ways, like creating [isLoading, setIsLoading]
         and checking that before rendering either this below, or, a div 
