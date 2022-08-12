@@ -12,7 +12,7 @@ function Home({ allPositions }) {
       <h4>Welcome</h4>
       <div className="level-select">
         {/* <img src={process.env.PUBLIC_URL="./superheroes-edit.jpg"} alt="level-one" /> */}
-        <p>Please choose a stage</p>
+        <p>Please enjoy the game</p>
         <div className="level-previews">
           <div className="level-thumbnail">
             <img

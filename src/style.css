@@ -399,7 +399,11 @@ body {
     color: var(--cool-watermelon);
     color: darkgray;
     font-size: 300%;
-    margin-block: 3%;
+    margin-block: 2.2%;
+  }
+
+  .hall-fame-foot {
+    color: gray;
   }
 
   @keyframes animate {
@@ -551,6 +555,10 @@ body {
 
   .hall-fame {
     margin-block: 9%;
+  }
+
+  .hall-fame-foot {
+    margin-top: 9%;
   }
 
   }

@@ -32,6 +32,9 @@ export default function Scores({ scores }) {
           })}
         </tbody>
       </table>
+      <span className="hall-fame-foot">
+        The Hall of Fame sits up to 100 legends!
+      </span>
     </section>
   );
 }
