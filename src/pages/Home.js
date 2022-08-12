@@ -22,10 +22,10 @@ function Home({ allPositions }) {
             />
             <button onClick={playGame}>play</button>
           </div>
-          <div className="level-thumbnail">
+          {/* <div className="level-thumbnail">
             <img src="./universe.jpg" alt="level two" />
             <button>play</button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
