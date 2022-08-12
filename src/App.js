@@ -1,19 +1,9 @@
-import GameArea from "./components/GameArea";
 import BountyBar from "./components/Header";
 import Play from "./pages/Play";
 import React, { useState, useEffect } from "react";
 import { Route, Routes, Link, useLocation } from "react-router-dom";
-import { Modal } from "./components/Modal";
 import db from "./firebase";
-import {
-  onSnapshot,
-  collection,
-  setDoc,
-  doc,
-  addDoc,
-  query,
-  orderBy,
-} from "firebase/firestore";
+import { onSnapshot, collection, query, orderBy } from "firebase/firestore";
 import Home from "./pages/Home";
 import Scores from "./pages/Scores";
 
@@ -80,10 +70,6 @@ export default function App() {
   };
 
   return (
-    // Pages (from left to right on navbar):
-    // i Information
-    // Play (level select), game controller icon
-    // Leaderboards
     <>
       <nav className="nav-bar" style={rectangularNav}>
         <ul className="nav-ul">
@@ -96,7 +82,6 @@ export default function App() {
           </li>
         </ul>
       </nav>
-      {/* Show bar */}
       {location.pathname === "/play" && (
         <BountyBar
           allPositions={allPositions}
@@ -136,7 +121,6 @@ export default function App() {
             />
           }
         />
-        {/* Close <BrowserRouter />... */}
       </Routes>
     </>
   );

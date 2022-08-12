@@ -12,15 +12,8 @@ export default function Scores({ scores }) {
           </tr>
           {scores.map((user) => {
             let inSeconds = (user.score / 1000).toFixed(2);
-            // let inMinutes = null;
-            // if (inSeconds > 60) {
-            //   let mins = Math.floor(user.score / 6000);
-            //   let secs = ((user.score % 6000) / 1000).toFixed(0);
-            //   inMinutes = mins + "Min, " + secs < 10 ? "0" : "" + secs + "S";
-            // }
 
             const formattedTime = inSeconds + " s";
-            // const formattedTime = inSeconds < 60 ? inSeconds + " s" : inMinutes;
 
             return (
               <tr key={user.id}>

@@ -1,5 +1,5 @@
 import GameArea from "../components/GameArea";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Modal } from "../components/Modal";
 
 export default function Play({
@@ -11,23 +11,16 @@ export default function Play({
   previouslyFound,
   showModal,
   setShowModal,
-  lastClickPosition,
   clientClickPosition,
   lastFound,
   setPreviouslyFound,
-  isGameOver,
-  startTime,
   setStartTime,
-  endTime,
   setEndTime,
   setIsGameOver,
-  myScore,
   setMyScore,
   totalTime,
   setTotalTime,
 }) {
-  // console.log(allPositions);
-
   // Reset everything to start a new game when page loads.
   useEffect(() => {
     setPreviouslyFound([]);
@@ -76,50 +69,31 @@ export default function Play({
     openModal();
 
     var rect = e.target.getBoundingClientRect(); // get some position, scale,... properties of the item
-    let mousePos = { x: 0, y: 0 };
-    mousePos.x = e.clientX - rect.left; // get the mouse position relative to the element
-    mousePos.y = e.clientY - e.target.scrollTop; //
+    let clickPos = { x: 0, y: 0 };
+    clickPos.x = e.clientX - rect.left; // get the click's position relative to the element
+    clickPos.y = e.clientY - e.target.scrollTop; //
 
     console.log(window.innerWidth);
-    setClientClickPosition({ x: mousePos.x, y: mousePos.y });
+    setClientClickPosition({ x: clickPos.x, y: clickPos.y });
   };
 
   return (
     <>
-      {/* We don't need a BountyBar here!!! We'll have Navbar. */}
-      {/* ^We don't need a BountyBar here!!! We'll have Navbar. */}
-      {/* So do we even  need a separate <GameArea /> ? We could just do all that right here */}
       {showModal ? (
         <Modal
           setShowModal={setShowModal}
-          lastClickPosition={lastClickPosition}
           clientClickPosition={clientClickPosition}
           allPositions={allPositions}
           lastFound={lastFound}
           previouslyFound={previouslyFound}
           setPreviouslyFound={setPreviouslyFound}
-          setIsGameOver={setIsGameOver}
-          setEndTime={setEndTime}
         />
       ) : null}
       <GameArea
         clickPosition={clickPosition}
-        openModal={openModal}
         previouslyFound={previouslyFound}
-        allPositions={allPositions}
         setShowModal={setShowModal}
-        isGameOver={isGameOver}
-        startTime={startTime}
-        setStartTime={setStartTime}
-        endTime={endTime}
-        setEndTime={setEndTime}
-        myScore={myScore}
-        setMyScore={setMyScore}
         totalTime={totalTime}
-        setPreviouslyFound={setPreviouslyFound}
-        setLastFound={setLastFound}
-        setIsGameOver={setIsGameOver}
-        setTotalTime={setTotalTime}
       />
     </>
   );

@@ -10,23 +10,13 @@ export default function GameArea({
   previouslyFound,
   setShowModal,
   totalTime,
-  setPreviouslyFound,
-  setLastFound,
-  setIsGameOver,
-  setEndTime,
-  setMyScore,
-  setTotalTime,
 }) {
   const [conditionalDisabled, setConditionalDisabled] = useState(false);
   const [isInputEmpty, setIsInputEmpty] = useState(false);
   const navigate = useNavigate();
-  // x profane word:
-  // const arg = process.argv[2];
 
   async function createScore(name, score) {
     if (name.trim() === "") {
-      // alert("empty input");
-      // setIsInputEmpty(true);
       return;
     }
 
@@ -51,16 +41,10 @@ export default function GameArea({
 
     const handleChange = (e) => {
       const val = e.target.value;
-      // if (val.trim() !== "") {
-      //   setisInputEmpty(false);
-      // }
-      // if (val.trim() !== "") {
-      //   setisInputEmpty(false);
-      // }
+
       const limit = 18;
       setInputThing(val.slice(0, limit));
     };
-    // Should we setEndTime here? I think it's better if we do that over in Modal.js, Line 54 or 53
     useEffect(() => {
       setShowModal(false);
       setConditionalDisabled(false);
@@ -75,7 +59,6 @@ export default function GameArea({
 
     const conditionalBtnStyle = {
       opacity: isInputEmpty ? "90%" : "",
-      // backgroundColor: isInputEmpty ? "transparent" : "",
     };
 
     return (
@@ -107,7 +90,6 @@ export default function GameArea({
             required={true}
             title="please provide a name"
           ></input>
-          {/* <button onClick={async () => handleNew()}>OK</button> */}
           <button
             style={conditionalBtnStyle}
             onClick={async () => {
@@ -129,7 +111,6 @@ export default function GameArea({
       <img
         id="img_ID"
         src="./superheroes-edit.jpg"
-        // useMap="#superheroes-map"
         border="0"
         width={"100%"}
         alt=""

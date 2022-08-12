@@ -19,12 +19,6 @@ const BountyBar = ({ allPositions, previouslyFound }) => {
   });
   return (
     <header className="headr">
-      {/* 05 August, 23:33, 
-      message for future self from tomorrow:
-       CONTINUE HERE!!!
-       Let's get the finder container stick to the top once
-       we've scrolled past the navbar!
-       */}
       <ul className="finder-container">{persons}</ul>
     </header>
   );

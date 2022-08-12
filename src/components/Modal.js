@@ -9,7 +9,6 @@ export const Modal = ({
   lastFound,
   previouslyFound,
   setPreviouslyFound,
-  setIsGameOver,
 }) => {
   const useModalRef = useRef();
   const closeModal = (e) => {
@@ -32,17 +31,6 @@ export const Modal = ({
     top: isOverflowingScreenY ? avoidOverflowY : clientClickPosition.y + "px",
   };
 
-  // const validateFind = (e) => {
-  //   // Get the name of the person from the "alt" attr
-  //   const selectedPerson = e.target.alt;
-  //   if (lastFound !== selectedPerson) {
-  //     return;
-  //   } else if (previouslyFound.includes(selectedPerson)) {
-  //     return;
-  //   }
-  //   setPreviouslyFound((prevFound) => [...prevFound, selectedPerson]);
-  // };
-
   const newValidation = (selection) => {
     const selectedPerson = selection;
     if (lastFound !== selectedPerson) {
@@ -51,16 +39,6 @@ export const Modal = ({
       return;
     }
     setPreviouslyFound((prevFound) => [...prevFound, selectedPerson]);
-
-    // ---------------------ATTENTION!
-    // Maybe we can figure out another way to check if the game is over
-    // Then, if the game is over, setMyScore(Math.abs(new Date() - startTime))
-
-    // if (previouslyFound.length === 4) {
-    //   alert("the game is over! -Modal");
-    //   setIsGameOver(true);
-    //   alert("setting game over from newValidation inside Modal");
-    // }
   };
 
   console.log("previouslyFound: ");
@@ -72,12 +50,7 @@ export const Modal = ({
         key={person.id}
         onClick={() => newValidation(person.name)}
       >
-        <img
-          src={person.thumbnail}
-          alt={person.name}
-          className="thumbnail"
-          // onClick={validateFind}
-        />
+        <img src={person.thumbnail} alt={person.name} className="thumbnail" />
         <span className="person-name-span">{person.name}</span>
         {previouslyFound.includes(person.name) && (
           <span>
