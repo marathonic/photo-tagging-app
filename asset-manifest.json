@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/photo-tagging-app/static/css/main.0ea12a9c.css",
-    "main.js": "/photo-tagging-app/static/js/main.f83fc6ec.js",
+    "main.js": "/photo-tagging-app/static/js/main.c439878e.js",
     "static/media/Questrial-Regular.ttf": "/photo-tagging-app/static/media/Questrial-Regular.8268e81790f4302669b7.ttf",
     "index.html": "/photo-tagging-app/index.html",
     "main.0ea12a9c.css.map": "/photo-tagging-app/static/css/main.0ea12a9c.css.map",
-    "main.f83fc6ec.js.map": "/photo-tagging-app/static/js/main.f83fc6ec.js.map"
+    "main.c439878e.js.map": "/photo-tagging-app/static/js/main.c439878e.js.map"
   },
   "entrypoints": [
     "static/css/main.0ea12a9c.css",
-    "static/js/main.f83fc6ec.js"
+    "static/js/main.c439878e.js"
   ]
 }
