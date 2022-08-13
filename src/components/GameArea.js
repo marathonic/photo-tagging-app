@@ -92,7 +92,7 @@ export default function GameArea({
       {previouslyFound.length === 4 ? <VictoryModal /> : null}
       <img
         id="img_ID"
-        src="./superheroes-edit.jpg"
+        src={process.env.PUBLIC_URL + "/superheroes-edit.jpg"}
         border="0"
         width={"100%"}
         alt=""
