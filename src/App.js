@@ -3,7 +3,13 @@ import Play from "./pages/Play";
 import React, { useState, useEffect } from "react";
 import { Route, Routes, Link, useLocation } from "react-router-dom";
 import db from "./firebase";
-import { onSnapshot, collection, query, orderBy } from "firebase/firestore";
+import {
+  onSnapshot,
+  collection,
+  query,
+  orderBy,
+  limit,
+} from "firebase/firestore";
 import Home from "./pages/Home";
 import Scores from "./pages/Scores";
 
@@ -46,7 +52,7 @@ export default function App() {
   //  get the high scores and arrange in descending order
   useEffect(() => {
     const collectionRef = collection(db, "scores");
-    const q = query(collectionRef, orderBy("score", "asc"));
+    const q = query(collectionRef, orderBy("score", "asc"), limit(100));
     const unsub = onSnapshot(q, (snapshot) =>
       setScores(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
     );

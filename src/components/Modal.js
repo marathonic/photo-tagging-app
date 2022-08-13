@@ -39,6 +39,7 @@ export const Modal = ({
       return;
     }
     setPreviouslyFound((prevFound) => [...prevFound, selectedPerson]);
+    setShowModal(false);
   };
 
   console.log("previouslyFound: ");

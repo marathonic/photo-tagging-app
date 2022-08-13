@@ -12,7 +12,6 @@ export default function GameArea({
   totalTime,
 }) {
   const [conditionalDisabled, setConditionalDisabled] = useState(false);
-  const [isInputEmpty, setIsInputEmpty] = useState(false);
   const navigate = useNavigate();
 
   async function createScore(name, score) {
@@ -52,23 +51,9 @@ export default function GameArea({
 
     let inSeconds = (totalTime / 1000).toFixed(2);
     let formattedSeconds = inSeconds + " s";
-    const conditionalEmphasis = {
-      border: isInputEmpty ? "crimson 4px solid" : "",
-      borderRadius: isInputEmpty ? "6px" : "",
-    };
-
-    const conditionalBtnStyle = {
-      opacity: isInputEmpty ? "90%" : "",
-    };
 
     return (
       <div className="victory-modal-container">
-        {/* ________________________________PLEASE READ: */}
-        {/* WE TRIED TO RENDER THIS CONDITIONALLY,
-        a bunch of different ways, like creating [isLoading, setIsLoading]
-        and checking that before rendering either this below, or, a div 
-        that said "Loading...". That div never showed up!
-        Look into implementing a loading animation if possible. */}
         <div className="victory-modal">
           <h5>You win!</h5>
           <span className="stopwatch-span">
@@ -86,17 +71,15 @@ export default function GameArea({
             value={inputThing}
             onChange={handleChange}
             disabled={conditionalDisabled}
-            style={conditionalEmphasis}
             required={true}
             title="please provide a name"
           ></input>
           <button
-            style={conditionalBtnStyle}
             onClick={async () => {
               createScore(inputThing, totalTime);
             }}
           >
-            {isInputEmpty ? "Enter name to proceed" : "OK"}
+            OK
           </button>
         </div>
       </div>
@@ -105,8 +88,7 @@ export default function GameArea({
 
   return (
     <div className="game-area-container">
-      {/* Try switching below to {previouslyFound.length === allPositions.length ? <VictoryModal /> : null};
-      It should behave the same, but would avoid hard coding. Could also try _isGameOver ? <VictoryModal />_ again */}
+      {/* checking length is less elegant, but faster, than using isGameOver below */}
       {previouslyFound.length === 4 ? <VictoryModal /> : null}
       <img
         id="img_ID"

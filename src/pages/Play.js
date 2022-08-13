@@ -20,6 +20,7 @@ export default function Play({
   setMyScore,
   totalTime,
   setTotalTime,
+  isGameOver,
 }) {
   // Reset everything to start a new game when page loads.
   useEffect(() => {
@@ -94,6 +95,7 @@ export default function Play({
         previouslyFound={previouslyFound}
         setShowModal={setShowModal}
         totalTime={totalTime}
+        isGameOver={isGameOver}
       />
     </>
   );
