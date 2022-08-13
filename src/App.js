@@ -65,8 +65,6 @@ export default function App() {
     }
   }, [previouslyFound, startTime]);
 
-  console.log(previouslyFound);
-
   const location = useLocation();
   const rectangularNav = {
     borderRadius: location.pathname === "/play" ? "0px" : "",

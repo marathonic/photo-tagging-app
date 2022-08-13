@@ -42,8 +42,6 @@ export const Modal = ({
     setShowModal(false);
   };
 
-  console.log("previouslyFound: ");
-  console.log(previouslyFound);
   const thumbnails = allPositions.map((person) => {
     return (
       <div

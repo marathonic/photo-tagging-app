@@ -51,9 +51,6 @@ export default function Play({
       (e.nativeEvent.offsetY / e.nativeEvent.target.offsetHeight) * 100
     );
 
-    console.log("Coordinates clicked: ");
-    console.log(xCoord, yCoord);
-
     for (let i = 0; i < allPositions.length; i++) {
       const curr = allPositions[i];
       if (curr.xMin <= xCoord && xCoord <= curr.xMax) {
@@ -74,7 +71,6 @@ export default function Play({
     clickPos.x = e.clientX - rect.left; // get the click's position relative to the element
     clickPos.y = e.clientY - e.target.scrollTop; //
 
-    console.log(window.innerWidth);
     setClientClickPosition({ x: clickPos.x, y: clickPos.y });
   };
 
