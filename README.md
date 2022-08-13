@@ -1,8 +1,9 @@
-# Getting Started with Create React App
+# SuperFinder (a photo tagging app)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Problems solved
 
-## Available Scripts
+-Scalable system for retrieving clicked coordinates across all screen sizes.
+-A Leaderboard that updates in real time (made simple thanks to Firestore)  
 
 In the project directory, you can run:
 
