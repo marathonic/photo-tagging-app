@@ -96,11 +96,16 @@ body {
   
   flex-wrap: wrap;
   overflow: scroll;
-}
-.modal-container .modal {
   position: absolute;
   right: 0;
   bottom: 0;
+}
+
+
+.modal > h4 {
+  margin-left: 5%;
+  color: var(--cool-blue);
+  margin-block: 3%;
 }
 
 .modal button {

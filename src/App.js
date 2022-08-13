@@ -29,7 +29,6 @@ export default function App() {
   const [isGameOver, setIsGameOver] = useState(false);
   const [startTime, setStartTime] = useState(0);
   const [endTime, setEndTime] = useState(0);
-  const [gameTime, setGameTime] = useState(0);
   const [myScore, setMyScore] = useState(0);
   const [totalTime, setTotalTime] = useState(0);
   const [scores, setScores] = useState([]);
@@ -59,8 +58,6 @@ export default function App() {
     return unsub;
   }, []);
 
-  // Try switching to if(previouslyFound.length === allPositions.length)
-  // We've removed the alert from the useEffect below
   useEffect(() => {
     if (previouslyFound.length === 4) {
       setIsGameOver(true);
@@ -120,7 +117,6 @@ export default function App() {
               startTime={startTime}
               isGameOver={isGameOver}
               endTime={endTime}
-              setGameTime={setGameTime}
               myScore={myScore}
               totalTime={totalTime}
               setTotalTime={setTotalTime}
